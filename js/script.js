@@ -5,6 +5,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------------------------------
+     SCROLL: HIDE HEADER-TOP
+  ------------------------------------------ */
+  const headerTop = document.querySelector('.header-top');
+  if (headerTop) {
+    let lastScrollY = window.scrollY;
+    const THRESHOLD = 60;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > THRESHOLD) {
+        headerTop.classList.add('hidden');
+      } else {
+        headerTop.classList.remove('hidden');
+      }
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+  }
+
+  /* ------------------------------------------
      ACTIVE NAV LINK
   ------------------------------------------ */
   const currentPage = location.pathname.split('/').pop() || 'index.html';
