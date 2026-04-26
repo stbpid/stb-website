@@ -100,9 +100,48 @@ function initPage() {
     function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
     function resetAuto()  { clearInterval(autoTimer); startAuto(); }
 
-    heroSlider.querySelector('.hero-arrow.next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-    heroSlider.querySelector('.hero-arrow.prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
     dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+
+    /* ── Mouse drag to navigate ── */
+    let dragStartX = 0;
+    let isDragging = false;
+
+    heroSlider.addEventListener('mousedown', e => {
+      dragStartX = e.clientX;
+      isDragging = true;
+      heroSlider.classList.add('dragging');
+      clearInterval(autoTimer);
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+    });
+
+    window.addEventListener('mouseup', e => {
+      if (!isDragging) return;
+      isDragging = false;
+      heroSlider.classList.remove('dragging');
+      const diff = e.clientX - dragStartX;
+      if (Math.abs(diff) > 50) {
+        goTo(diff < 0 ? current + 1 : current - 1);
+      }
+      startAuto();
+    });
+
+    /* ── Touch swipe to navigate ── */
+    let touchStartX = 0;
+    heroSlider.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      clearInterval(autoTimer);
+    }, { passive: true });
+
+    heroSlider.addEventListener('touchend', e => {
+      const diff = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        goTo(diff < 0 ? current + 1 : current - 1);
+      }
+      startAuto();
+    }, { passive: true });
 
     goTo(0);
     startAuto();
