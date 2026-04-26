@@ -33,7 +33,7 @@ async function initComponents() {
 ------------------------------------------ */
 function initPage() {
 
-  /* ── SCROLL: HIDE HEADER-TOP, KEEP NAV STICKY ── */
+  /* ── FIXED HEADER: hide top bar on scroll, keep nav always visible ── */
   const siteHeader = document.querySelector('.site-header');
   const headerTop  = document.querySelector('.header-top');
 
@@ -42,14 +42,14 @@ function initPage() {
 
     function onScroll() {
       const scrolled = window.scrollY > THRESHOLD;
-      /* collapse the top info bar */
       headerTop.classList.toggle('hidden', scrolled);
-      /* add a visual cue that the nav is now floating */
       siteHeader.classList.toggle('scrolled', scrolled);
+      /* adjust body padding so content isn't hidden under the fixed header */
+      document.body.classList.toggle('header-collapsed', scrolled);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* run once on load */
+    onScroll(); /* apply correct state on page load */
   }
 
   /* ── ACTIVE NAV LINK ── */
