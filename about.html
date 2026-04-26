@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Social Technology Bureau</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .video-block { position: relative; }
+    .video-thumb { position: relative; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-logos">
+        <div class="header-logo-box dswd-main">DSWD<br>Logo</div>
+        <div class="header-logo-box">STB<br>Logo</div>
+        <div class="header-logo-box">Bagong<br>Pilipinas</div>
+      </div>
+      <div class="header-contact">
+        <a href="tel:028951724"><i class="fas fa-phone"></i> 02-8951-7124</a>
+        <a href="mailto:soctech@dswd.gov.ph"><i class="fas fa-envelope"></i> soctech@dswd.gov.ph</a>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="#">Social Technologies</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="newsletter.html">E-Newsletter</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-cert-logos">
+        <div class="nav-cert-logo">ISO<br>Cert</div>
+        <div class="nav-cert-logo">Award<br>Seal</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PAGE HERO — GROUP PHOTO
+  ============================================================ -->
+  <div class="page-hero" style="height:300px;">
+    <div class="page-hero-img" style="background-image:url('https://placehold.co/1600x300/c5d5ea/8fa3bc?text=STB+Staff+Group+Photo');">
+      <img src="https://placehold.co/1600x300/c5d5ea/8fa3bc?text=STB+Staff+Group+Photo" alt="STB Staff Group Photo" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
+    </div>
+    <div class="page-hero-overlay"></div>
+  </div>
+
+  <!-- ============================================================
+       STB INTRO + VIDEO
+  ============================================================ -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="stb-intro-grid reveal">
+
+        <!-- Left: Video -->
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+            <div class="stb-logo-mark" style="margin-bottom:0;">
+              <img src="https://placehold.co/80x80/dde4ef/7a8fad?text=STB" alt="STB Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+            </div>
+            <h2 class="section-title" style="margin:0;">Social Technology Bureau</h2>
+          </div>
+          <div class="video-block">
+            <div class="video-thumb" style="height:260px;border-radius:12px;overflow:hidden;position:relative;background:#b8c9e0;">
+              <img src="https://placehold.co/560x260/b8c9e0/ffffff?text=STB+Video+Thumbnail" alt="STB Introduction Video" style="width:100%;height:100%;object-fit:cover;" />
+              <button class="play-btn" aria-label="Play STB Introduction Video" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"><i class="fas fa-play"></i></button>
+            </div>
+            <div style="margin-top:16px;">
+              <a href="#" class="btn btn-primary">Watch Video <i class="fas fa-play"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Description -->
+        <div>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.85;margin-bottom:18px;">To further enhance the capacity of the government to address youth involvement with illegal drugs in the country, the Department of Social Welfare and Development (DSWD) and the Dangerous Drugs Board (DDB), in collaboration with the Department of the Interior and Local Government (DILG), convened for the National Orientation on Special Drug Education Center (SDEC).</p>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.85;margin-bottom:18px;">The event gathered regional trainers from DSWD Field Offices across the country to partake in a five-day training, honing their knowledge, skills, and attitude relative to the establishment, operation, and maintenance of SDEC.</p>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.85;">DDB Chairperson Oscar Valenzuela opened the program, expressing his eagerness to witness the continued cooperation among agencies and their stakeholders in ensuring the success of SDEC. He also emphasized the importance of its institutionalization, paving the way for a practical and strategic response to drug abuse among out-of-school youth in the Philippines.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VISION & MISSION CARDS
+  ============================================================ -->
+  <section class="section-pad" style="background:var(--bg-light);">
+    <div class="container">
+      <div class="vision-mission-grid reveal">
+
+        <div class="vm-card">
+          <div class="vm-card-img" style="position:relative;">
+            <img src="https://placehold.co/560x200/c5d5ea/8fa3bc?text=Vision+Photo" alt="STB Vision" style="width:100%;height:100%;object-fit:cover;" />
+            <div class="vm-badge">Vision</div>
+          </div>
+          <div class="vm-card-body">
+            <p>STB is the lead in the development of social welfare and development (SWD) programs and services for and with the poor, vulnerable, and disadvantaged Filipinos.</p>
+          </div>
+        </div>
+
+        <div class="vm-card">
+          <div class="vm-card-img" style="position:relative;">
+            <img src="https://placehold.co/560x200/c5d5ea/8fa3bc?text=Mission+Photo" alt="STB Mission" style="width:100%;height:100%;object-fit:cover;" />
+            <div class="vm-badge">Mission</div>
+          </div>
+          <div class="vm-card-body">
+            <p>Formulate, enhance and promote social welfare models of intervention for the poor, vulnerable and disadvantaged Filipinos.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMMITMENT SECTION
+  ============================================================ -->
+  <section class="commitment-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">What We Are About</span>
+        <h2 class="section-title">Social Technology Bureau Commitment</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="commitment-grid reveal">
+
+        <div class="commitment-item">
+          <div class="commitment-icon">
+            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+1" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+          </div>
+          <div>
+            <h4>Responsive Development</h4>
+            <p>Develop responsive, transformative, and sustainable SWD models of intervention that addresses the needs of the poor, vulnerable and disadvantaged groups.</p>
+          </div>
+        </div>
+
+        <div class="commitment-item">
+          <div class="commitment-icon">
+            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+2" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+          </div>
+          <div>
+            <h4>Proactive Technology</h4>
+            <p>Ensure proactive and improved social technology development process, thereby reducing turn-around time for the completion of models of intervention from conceptualization to pilot testing and evaluation.</p>
+          </div>
+        </div>
+
+        <div class="commitment-item">
+          <div class="commitment-icon">
+            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+3" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+          </div>
+          <div>
+            <h4>Capacity Building</h4>
+            <p>Provide continuing capacity building to its staff and intermediaries, and facilitate organizational development activities to ensure holistic, rights-based, evidence-based, and participatory technologies.</p>
+          </div>
+        </div>
+
+        <div class="commitment-item">
+          <div class="commitment-icon">
+            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+4" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+          </div>
+          <div>
+            <h4>Accelerated Dissemination</h4>
+            <p>Conduct accelerated and intensified social marketing of SWD models of intervention to address the gaps in responding to the needs of the sectors served by DSWD Central and Field Offices, Social Welfare and Development Agencies, Local Government Units, and other intermediaries.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       QUALITY POLICY
+  ============================================================ -->
+  <section class="quality-policy-section section-pad">
+    <div class="container">
+      <div class="quality-policy-grid reveal">
+
+        <!-- Quality Box (Blue) -->
+        <div class="quality-box">
+          <div class="quality-box-header">
+            <div class="quality-logo">
+              <img src="https://placehold.co/80x80/ffffff/003087?text=DSWD" alt="DSWD Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />
+            </div>
+            <div>
+              <div style="font-size:12px;letter-spacing:2px;opacity:0.8;margin-bottom:4px;font-weight:600;">WE ARE COMMITTED TO</div>
+              <h2 style="font-size:20px;font-weight:800;line-height:1.2;">QUALITY<br>POLICY</h2>
+            </div>
+          </div>
+
+          <p style="font-size:13px;opacity:0.9;margin-bottom:24px;line-height:1.7;">We, at the Department of Social Welfare and Development (DSWD), commit to:</p>
+
+          <div class="dswd-acronym-list">
+            <div class="dswd-item">
+              <div class="dswd-letter-circle">D</div>
+              <div class="dswd-item-photo"><img src="https://placehold.co/48x48/ffffff/003087?text=Photo" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div>
+                <h4>Deliver, coordinate, and monitor</h4>
+                <p>Social protection programs and services to the poor, vulnerable, and disadvantaged population towards a fair, just, and peaceful society;</p>
+              </div>
+            </div>
+
+            <div class="dswd-item">
+              <div class="dswd-letter-circle">S</div>
+              <div class="dswd-item-photo"><img src="https://placehold.co/48x48/ffffff/003087?text=Photo" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div>
+                <h4>Sustain a culture of excellence</h4>
+                <p>Through continual improvement of systems, mechanisms, and procedures in the delivery of programs and services;</p>
+              </div>
+            </div>
+
+            <div class="dswd-item">
+              <div class="dswd-letter-circle">W</div>
+              <div class="dswd-item-photo"><img src="https://placehold.co/48x48/ffffff/003087?text=Photo" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div>
+                <h4>Work with integrity</h4>
+                <p>And adhere to ethical standards for customer satisfaction and quality service by complying with the DSWD mandates, and other pertinent laws; and</p>
+              </div>
+            </div>
+
+            <div class="dswd-item">
+              <div class="dswd-letter-circle">D</div>
+              <div class="dswd-item-photo"><img src="https://placehold.co/48x48/ffffff/003087?text=Photo" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div>
+                <h4>Demonstrate genuine concern</h4>
+                <p>For the poor, prompt compassionate service, and free from any form of corruption.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side text -->
+        <div>
+          <span class="label-tag">Quality Assurance</span>
+          <h2 class="section-title">Our Quality Commitment</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:14px;color:var(--text-light);line-height:1.85;margin-bottom:20px;">The Social Technology Bureau adheres to the highest standards of quality in all its programs, services, and operations. We are committed to continuous improvement and excellence in serving the Filipino people.</p>
+          <p style="font-size:14px;color:var(--text-light);line-height:1.85;margin-bottom:20px;">Our quality management system ensures that all processes are transparent, accountable, and responsive to the needs of our stakeholders and the communities we serve.</p>
+          <p style="font-size:14px;color:var(--text-light);line-height:1.85;">We continuously review and improve our systems, guided by our commitment to deliver the best social technology programs and services for every Filipino.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ORGANIZATION STRUCTURE
+  ============================================================ -->
+  <section class="org-chart-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Bureau Structure</span>
+        <h2 class="section-title">Organization Structure</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Org Chart Tabs -->
+      <div class="tabs-nav" style="margin-bottom:32px;">
+        <button class="tab-btn active" data-tab="stb-div">Social Technology Bureau</button>
+        <button class="tab-btn" data-tab="dfp-div">Design Formulation Division</button>
+        <button class="tab-btn" data-tab="pi-div">Pilot Implementation Division</button>
+        <button class="tab-btn" data-tab="stae-div">Social Technology Analysis and Evaluation Division</button>
+        <button class="tab-btn" data-tab="admin-div">Admin Support</button>
+      </div>
+
+      <div class="tab-content active reveal" data-content="stb-div">
+        <div class="org-chart">
+
+          <!-- Director -->
+          <div class="org-node">
+            <div class="org-box" style="min-width:200px;">
+              <div class="org-box-photo"><img src="https://placehold.co/52x52/dde8f5/99b5d5?text=Dir" alt="Director photo" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div class="org-box-name">Helen Y. Suzara</div>
+              <div class="org-box-title">Secretary</div>
+            </div>
+            <div class="org-connector"></div>
+          </div>
+
+          <!-- Assistant Director -->
+          <div class="org-node" style="margin-bottom:0;">
+            <div class="org-box" style="min-width:200px;">
+              <div class="org-box-photo"><img src="https://placehold.co/52x52/dde8f5/99b5d5?text=AD" alt="Assistant Director photo" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+              <div class="org-box-name">Marilyn B. Moral</div>
+              <div class="org-box-title">Undersecretary<br>Social Technology Bureau</div>
+            </div>
+            <div class="org-connector"></div>
+          </div>
+
+          <!-- Level 3 — three divisions -->
+          <div class="org-level" style="gap:32px;position:relative;padding-top:0;">
+            <div style="position:absolute;top:0;left:50%;width:calc(66% - 0px);height:2px;background:var(--primary-blue);transform:translateX(-50%);"></div>
+
+            <div class="org-level-item">
+              <div class="org-connector" style="height:20px;"></div>
+              <div class="org-box">
+                <div class="org-box-photo"><img src="https://placehold.co/52x52/dde8f5/99b5d5?text=P1" alt="Person photo" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+                <div class="org-box-name">Jayson O. Osbal</div>
+                <div class="org-box-title">Senior Social Welfare<br>Officer</div>
+              </div>
+            </div>
+
+            <div class="org-level-item">
+              <div class="org-connector" style="height:20px;"></div>
+              <div class="org-box">
+                <div class="org-box-photo"><img src="https://placehold.co/52x52/dde8f5/99b5d5?text=P2" alt="Person photo" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+                <div class="org-box-name">John B. Barroula</div>
+                <div class="org-box-title">Senior Social Welfare<br>Officer</div>
+              </div>
+            </div>
+
+            <div class="org-level-item">
+              <div class="org-connector" style="height:20px;"></div>
+              <div class="org-box">
+                <div class="org-box-photo"><img src="https://placehold.co/52x52/dde8f5/99b5d5?text=P3" alt="Person photo" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" /></div>
+                <div class="org-box-name">Darlene R. Dancel</div>
+                <div class="org-box-title">Administrative<br>Assistant III</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-content" data-content="dfp-div">
+        <p style="color:var(--text-light);font-size:14px;padding:32px 0;">Design Formulation Division organizational structure will be displayed here.</p>
+      </div>
+      <div class="tab-content" data-content="pi-div">
+        <p style="color:var(--text-light);font-size:14px;padding:32px 0;">Pilot Implementation Division organizational structure will be displayed here.</p>
+      </div>
+      <div class="tab-content" data-content="stae-div">
+        <p style="color:var(--text-light);font-size:14px;padding:32px 0;">Social Technology Analysis and Evaluation Division organizational structure will be displayed here.</p>
+      </div>
+      <div class="tab-content" data-content="admin-div">
+        <p style="color:var(--text-light);font-size:14px;padding:32px 0;">Admin Support organizational structure will be displayed here.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STB VISUALS
+  ============================================================ -->
+  <section class="stb-visuals-section section-pad" style="background:var(--bg-light);">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Publications</span>
+        <h2 class="section-title">Social Technology Bureau Visuals</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:40px;margin-top:32px;" class="reveal">
+        <div class="stb-visuals-card">
+          <div class="stb-book-cover">
+            <img src="https://placehold.co/140x180/c5d5ea/99b5d5?text=STB+Manual" alt="STB Visual Manual" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" />
+          </div>
+          <div>
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">STB Bureau Manual</h3>
+            <p style="font-size:13px;color:var(--text-light);margin-bottom:20px;">Access the complete Social Technology Bureau visual documentation and annual reports.</p>
+            <a href="#" class="btn btn-primary">View STB Visuals <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-seal">PH<br>Republic<br>Seal</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">Republika ng Pilipinas<br>Department of Social Welfare and Development</p>
+      </div>
+      <div class="footer-logos-col">
+        <div class="footer-logo-box">DSWD Logo</div>
+        <div class="footer-logo-box">STB Logo</div>
+        <div class="footer-logo-box">Bagong Pilipinas</div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:8px;">Copyright &copy; Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Government Links</h4>
+        <ul>
+          <li><a href="#">Office of the President</a></li>
+          <li><a href="#">Office of the Vice President</a></li>
+          <li><a href="#">Senate of the Philippines</a></li>
+          <li><a href="#">House of Representatives</a></li>
+          <li><a href="#">Supreme Court</a></li>
+          <li><a href="#">Sandiganbayan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Other Resources</h4>
+        <ul>
+          <li><a href="#">Data Privacy</a></li>
+          <li><a href="#">Citizen's Charter</a></li>
+          <li><a href="#">Freedom of Information (FOI)</a></li>
+          <li><a href="#">Transparency Seal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <p><strong>Contact Numbers:</strong><br>02-8951-7124</p>
+          <br>
+          <p><strong>Email Address:</strong><br>soctech@dswd.gov.ph</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow our Socials</h4>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy; 2026 Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Social Technology Bureau</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    .support-widgets-section { background: var(--white); padding: 64px 0; }
+    .map-address-section { background: var(--bg-light); padding: 64px 0; }
+
+    /* Widget full-width rows */
+    .widget-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .widget-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 48px 40px;
+      transition: box-shadow var(--transition);
+    }
+    .widget-card:hover { box-shadow: var(--shadow-md); }
+
+    .widget-visual {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #dde8f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .widget-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+    .widget-text h2 { font-size: 22px; font-weight: 800; color: var(--text-dark); line-height: 1.3; margin-bottom: 20px; }
+
+    @media (max-width: 900px) {
+      .widget-row { grid-template-columns: 1fr; }
+      .widget-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .widget-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-logos">
+        <div class="header-logo-box dswd-main">DSWD<br>Logo</div>
+        <div class="header-logo-box">STB<br>Logo</div>
+        <div class="header-logo-box">Bagong<br>Pilipinas</div>
+      </div>
+      <div class="header-contact">
+        <a href="tel:028951724"><i class="fas fa-phone"></i> 02-8951-7124</a>
+        <a href="mailto:soctech@dswd.gov.ph"><i class="fas fa-envelope"></i> soctech@dswd.gov.ph</a>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Social Technologies</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="newsletter.html">E-Newsletter</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-cert-logos">
+        <div class="nav-cert-logo">ISO<br>Cert</div>
+        <div class="nav-cert-logo">Award<br>Seal</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SUPPORT WIDGETS
+  ============================================================ -->
+  <section class="support-widgets-section">
+    <div class="container">
+      <div class="widget-row reveal">
+
+        <!-- Ticketing System -->
+        <div class="widget-card">
+          <div class="widget-visual">
+            <img src="https://placehold.co/340x200/dde8f5/99b5d5?text=Ticketing+System+Illustration" alt="Ticketing System Illustration" />
+          </div>
+          <div class="widget-text">
+            <h2>Social Technology Bureau Ticketing System</h2>
+            <a href="#" class="btn btn-primary">Create New Request <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Customer Satisfaction Survey -->
+        <div class="widget-card">
+          <div class="widget-visual">
+            <img src="https://placehold.co/340x200/dde8f5/99b5d5?text=Survey+Illustration" alt="Customer Satisfaction Survey Illustration" />
+          </div>
+          <div class="widget-text">
+            <h2>Customer Satisfaction Survey</h2>
+            <a href="#" class="btn btn-primary">Access Survey Form <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAP & ADDRESS
+  ============================================================ -->
+  <section class="map-address-section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:32px;">
+        <span class="label-tag">Lorem Ipsum</span>
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="map-grid reveal">
+
+        <!-- Map -->
+        <div class="map-iframe-wrapper">
+          <iframe
+            title="DSWD Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9!2d121.052!3d14.651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b11c0d45b4a1%3A0x5a8d5c2f8ed8e0!2sDepartment%20of%20Social%20Welfare%20and%20Development!5e0!3m2!1sen!2sph!4v1700000000000"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Address -->
+        <div class="address-block">
+          <h3>Department of Social Welfare and Development (DSWD)</h3>
+
+          <div class="address-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>3RD Floor, Matapat Building<br>
+               Department of Social Welfare And Development<br>
+               Central Office IBP Road, Constitution Hills, Batasan Complex, Quezon City</p>
+          </div>
+
+          <div class="address-item">
+            <i class="fas fa-phone"></i>
+            <p>02-8951-7124</p>
+          </div>
+
+          <div class="address-item">
+            <i class="fas fa-envelope"></i>
+            <p>soctech@dswd.gov.ph</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REGIONAL STU CONTACT TABLE
+  ============================================================ -->
+  <section class="regional-stu-section section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Social Technology Unit</span>
+        <h2 class="section-title">Contact your Regional STU</h2>
+        <div class="section-divider"></div>
+        <p class="stu-desc">For Social Technology concerns on your respective LGU/Province you may contact your Regional Social Technology Unit below:</p>
+      </div>
+
+      <div class="reveal">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="luzon">Luzon Cluster</button>
+          <button class="tab-btn" data-tab="visayas">Visayas+ Cluster</button>
+          <button class="tab-btn" data-tab="mindanao">Mindanao Cluster</button>
+        </div>
+
+        <!-- LUZON -->
+        <div class="tab-content active" data-content="luzon">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Focal Person</th>
+                  <th>Division</th>
+                  <th>Email Address</th>
+                  <th>Contact Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NCR (Metro Manila)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>CAR (Cordillera)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region I (Ilocos)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region II (Cagayan Valley)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region III (Central Luzon)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region IV-A (CALABARZON)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region IV-B (MIMAROPA)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region V (Bicol)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- VISAYAS -->
+        <div class="tab-content" data-content="visayas">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Focal Person</th>
+                  <th>Division</th>
+                  <th>Email Address</th>
+                  <th>Contact Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Region VI (Western Visayas)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region VII (Central Visayas)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region VIII (Eastern Visayas)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- MINDANAO -->
+        <div class="tab-content" data-content="mindanao">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Focal Person</th>
+                  <th>Division</th>
+                  <th>Email Address</th>
+                  <th>Contact Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Region IX (Zamboanga Peninsula)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region X (Northern Mindanao)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region XI (Davao Region)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region XII (SOCCSKSARGEN)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>Region XIII (Caraga)</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+                <tr>
+                  <td>BARMM</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>Lorem Ipsum</td>
+                  <td>09123456789</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-seal">PH<br>Republic<br>Seal</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">Republika ng Pilipinas<br>Department of Social Welfare and Development</p>
+      </div>
+      <div class="footer-logos-col">
+        <div class="footer-logo-box">DSWD Logo</div>
+        <div class="footer-logo-box">STB Logo</div>
+        <div class="footer-logo-box">Bagong Pilipinas</div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:8px;">Copyright &copy; Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Government Links</h4>
+        <ul>
+          <li><a href="#">Office of the President</a></li>
+          <li><a href="#">Office of the Vice President</a></li>
+          <li><a href="#">Senate of the Philippines</a></li>
+          <li><a href="#">House of Representatives</a></li>
+          <li><a href="#">Supreme Court</a></li>
+          <li><a href="#">Sandiganbayan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Other Resources</h4>
+        <ul>
+          <li><a href="#">Data Privacy</a></li>
+          <li><a href="#">Citizen's Charter</a></li>
+          <li><a href="#">Freedom of Information (FOI)</a></li>
+          <li><a href="#">Transparency Seal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <p><strong>Contact Numbers:</strong><br>02-8951-7124</p>
+          <br>
+          <p><strong>Email Address:</strong><br>soctech@dswd.gov.ph</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow our Socials</h4>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy; 2026 Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

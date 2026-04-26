@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Technology Bureau — DSWD</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Homepage-specific extras */
+    .about-home-section { background: var(--white); }
+    .newsletter-label { font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
+    .innovator-home-card { background: var(--bg-light); border-radius: var(--radius-md); padding: 24px; }
+    .innovator-home-img { width: 100%; height: 160px; background: #c5d5ea; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #8fa3bc; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+    .gad-content h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .gad-content p { font-size: 13px; opacity: 0.85; margin-bottom: 16px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-logos">
+        <div class="header-logo-box dswd-main">DSWD<br>Logo</div>
+        <div class="header-logo-box">STB<br>Logo</div>
+        <div class="header-logo-box">Bagong<br>Pilipinas</div>
+      </div>
+      <div class="header-contact">
+        <a href="tel:028951724"><i class="fas fa-phone"></i> 02-8951-7124</a>
+        <a href="mailto:soctech@dswd.gov.ph"><i class="fas fa-envelope"></i> soctech@dswd.gov.ph</a>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Social Technologies</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="newsletter.html">E-Newsletter</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-cert-logos">
+        <div class="nav-cert-logo">ISO<br>Cert</div>
+        <div class="nav-cert-logo">Award<br>Seal</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SLIDER
+  ============================================================ -->
+  <section class="hero-slider" aria-label="Hero Slideshow">
+
+    <div class="hero-slide active">
+      <div class="hero-bg" style="background-image: url('https://placehold.co/1600x520/1b3a6b/ffffff?text=Hero+Slide+1');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Bawat Buhay Mahalaga sa DSWD</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas eu enim vel libero. Cras aptent taciti, sociosqu ad litora torquent per conubia nostra.</p>
+            <a href="about.html" class="btn btn-outline">Discover Our Programs <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="hero-bg" style="background-image: url('https://placehold.co/1600x520/0d3b6e/ffffff?text=Hero+Slide+2');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Empowering Communities Through Social Technology</h1>
+            <p>The Social Technology Bureau develops and promotes evidence-based models of intervention for the poor, vulnerable, and disadvantaged Filipinos.</p>
+            <a href="about.html" class="btn btn-outline">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="hero-bg" style="background-image: url('https://placehold.co/1600x520/002855/ffffff?text=Hero+Slide+3');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Serving the Poor, Vulnerable, and Disadvantaged</h1>
+            <p>Together, we build a stronger nation through innovative social welfare programs and sustainable community development initiatives.</p>
+            <a href="contact.html" class="btn btn-outline">Contact Us <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-arrow next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+    <div class="hero-controls">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
+      <button class="hero-dot" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT THE BUREAU
+  ============================================================ -->
+  <section class="about-home-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">About the Bureau</span>
+        <h2 class="section-title">Social Technology Bureau</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="about-cards-grid reveal">
+        <div class="about-card">
+          <div class="about-card-img" style="background-image:url('https://placehold.co/400x180/c5d5ea/8fa3bc?text=Mission+%26+Vision');">
+            <span style="display:none;">Mission &amp; Vision Photo</span>
+          </div>
+          <div class="about-card-body">
+            <h3>Mission and Vision</h3>
+            <p>Discover what drives STB. Learn about the Bureau's mission to serve and vision for a better future for every Filipino.</p>
+            <a href="about.html" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-img" style="background-image:url('https://placehold.co/400x180/c5d5ea/8fa3bc?text=Mandate+Photo');">
+            <span style="display:none;">Mandate Photo</span>
+          </div>
+          <div class="about-card-body">
+            <h3>Mandate</h3>
+            <p>Understand the roles, responsibilities, and how STB delivers meaningful and effective public service.</p>
+            <a href="about.html" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-img" style="background-image:url('https://placehold.co/400x180/c5d5ea/8fa3bc?text=Directory+Photo');">
+            <span style="display:none;">Directory Photo</span>
+          </div>
+          <div class="about-card-body">
+            <h3>Directory</h3>
+            <p>Find out about the Social Technologies, programs, and services that STB offers to support and improve communities.</p>
+            <a href="contact.html" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS SECTION
+  ============================================================ -->
+  <section class="stats-section section-pad-sm">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:8px;">
+        <span class="label-tag">Angels in Red Vest in Action</span>
+        <h2 class="section-title">Social Technology at work</h2>
+        <div class="section-divider"></div>
+      </div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <div class="stat-number" data-target="722">0</div>
+        <div class="stat-label">Total Adopted and Replicated</div>
+        <div class="stat-desc">Number of Social Technologies being adopted and replicated across municipalities.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="654">0</div>
+        <div class="stat-label">Total MOA Signed</div>
+        <div class="stat-desc">Number of Memorandums of Agreement between LGUs who are implementing Social Technologies.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="526">0</div>
+        <div class="stat-label">Total SB Resolution</div>
+        <div class="stat-desc">Number of local policies in local Government units supporting and strengthening Social Technologies.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="386">0</div>
+        <div class="stat-label">Total Expression of Interest</div>
+        <div class="stat-desc">Number of organizations and communities eager to replicate Social Technologies.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FLAGSHIP SOCIAL TECHNOLOGIES
+  ============================================================ -->
+  <section class="flagship-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Our Core Innovations</span>
+        <h2 class="section-title">Flagship Social Technologies</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Discover STB's leading social welfare innovations designed to address deep-rooted issues and respond to priority needs.</p>
+      </div>
+
+      <div class="flagship-carousel-wrapper reveal">
+        <div class="flagship-track">
+
+          <div class="flagship-card">
+            <div class="flagship-card-img">
+              <img src="https://placehold.co/400x220/1b4f8a/ffffff?text=ProtectTEEN" alt="ProtectTEEN" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="flagship-card-overlay">
+              <h3>ProtectTEEN</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="flagship-card">
+            <div class="flagship-card-img">
+              <img src="https://placehold.co/400x220/1a5276/ffffff?text=Yakap+Bayan" alt="Yakap Bayan" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="flagship-card-overlay">
+              <h3>Yakap Bayan</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="flagship-card">
+            <div class="flagship-card-img">
+              <img src="https://placehold.co/400x220/154360/ffffff?text=Paghilom" alt="Paghilom" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="flagship-card-overlay">
+              <h3>Paghilom</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="flagship-card">
+            <div class="flagship-card-img">
+              <img src="https://placehold.co/400x220/1f3a6e/ffffff?text=ENABLE" alt="ENABLE" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="flagship-card-overlay">
+              <h3>ENABLE</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="flagship-card">
+            <div class="flagship-card-img">
+              <img src="https://placehold.co/400x220/1b3a6b/ffffff?text=BOOST" alt="BOOST" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="flagship-card-overlay">
+              <h3>BOOST</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flagship-nav reveal">
+        <button class="carousel-btn prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       IMPACT SECTION
+  ============================================================ -->
+  <section class="impact-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Sectors We Serve</span>
+        <h2 class="section-title">Impact of Social Technologies</h2>
+        <div class="section-divider"></div>
+        <p class="impact-intro">Explore innovative Social Welfare and Development (SWD) models of intervention that use proven theories and tested methods to improve social conditions and empower disadvantaged, poor, and vulnerable Filipinos.</p>
+      </div>
+
+      <div class="impact-grid reveal">
+        <div class="impact-item">
+          <i class="fas fa-child" aria-hidden="true"></i>
+          <p>Children and Youth</p>
+        </div>
+        <div class="impact-item">
+          <i class="fas fa-people-arrows" aria-hidden="true"></i>
+          <p>Family and Women</p>
+        </div>
+        <div class="impact-item">
+          <i class="fas fa-walking" aria-hidden="true"></i>
+          <p>Other Marginalized Groups</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VIDEO DEVELOPMENT PROCESS
+  ============================================================ -->
+  <section class="video-section section-pad">
+    <div class="container">
+      <div class="video-wrapper reveal">
+        <div>
+          <span class="label-tag">STB in Action</span>
+          <h2 class="section-title">Social Technology Development Process</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:14px;color:var(--text-light);margin-bottom:24px;">Learn how the Social Technology Bureau develops, pilots, and scales social welfare innovations that make a real difference in Filipino communities.</p>
+          <button class="btn btn-primary play-modal-btn"><i class="fas fa-play"></i> Watch Video</button>
+        </div>
+        <div class="video-block">
+          <div class="video-thumb">
+            <img src="https://placehold.co/560x300/b8c9e0/ffffff?text=Video+Thumbnail" alt="STB Development Process Video Thumbnail" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
+            <button class="play-btn" aria-label="Play video"><i class="fas fa-play"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE INNOVATOR + DIRECTOR'S CORNER
+  ============================================================ -->
+  <section class="newsletter-home-section section-pad">
+    <div class="container">
+      <div class="newsletter-home-grid reveal">
+
+        <!-- The Innovator -->
+        <div>
+          <span class="label-tag">Lorem Ipsum</span>
+          <h2 class="newsletter-label">The Innovator</h2>
+          <div class="section-divider"></div>
+          <div class="innovator-home-card">
+            <div class="innovator-home-img">
+              <img src="https://placehold.co/320x160/1b3a6b/ffffff?text=The+Innovator+Banner" alt="The Innovator Newsletter" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <p style="font-size:13px;color:var(--text-light);margin-bottom:16px;">The official newsletter of the Social Technology Bureau. Stay updated with STB's latest programs, innovations, and community stories.</p>
+            <a href="newsletter.html" class="btn btn-primary" style="width:100%;justify-content:center;">Read The Innovator <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Director's Corner -->
+        <div>
+          <span class="label-tag">Leadership</span>
+          <h2 class="section-title">Director's Corner</h2>
+          <div class="section-divider"></div>
+          <div class="director-grid">
+            <div class="director-photo">
+              <img src="https://placehold.co/200x240/d0ddef/8fa3bc?text=Director+Photo" alt="Bureau Director" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+            </div>
+            <div>
+              <p style="font-size:13px;color:var(--text-light);line-height:1.8;margin-bottom:12px;">In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna. Nunc nec ultrices massa, pretium rhoncus nulla. Etiam lectus ante, facilisis non tempor ac, imperdiet in dolor.</p>
+              <p style="font-size:13px;color:var(--text-light);line-height:1.8;margin-bottom:12px;">Etiam rutrum erat. In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna.</p>
+              <p style="font-size:13px;color:var(--text-light);line-height:1.8;">In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna. Nunc nec ultrices massa.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GAD BANNER
+  ============================================================ -->
+  <section class="section-pad-sm" style="background:var(--bg-light);">
+    <div class="container">
+      <div class="gad-banner reveal">
+        <div class="gad-banner-visual">
+          <img src="https://placehold.co/160x120/8a2be2/ffffff?text=GAD+Visual" alt="Gender and Development Visual" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+        </div>
+        <div class="gad-content">
+          <h3>Gender and Development (GAD)</h3>
+          <p>Explore the Bureau's Gender and Development corner — resources, programs, and initiatives that promote gender equality and women's empowerment.</p>
+          <a href="#" class="btn btn-outline">Visit the Bureau's GAD Corner <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCTECH FAIR CTA BANNER
+  ============================================================ -->
+  <section class="cta-banner" aria-label="SocTech Fair 2026 Call to Action">
+    <div class="cta-banner-left">
+      <div class="cta-heart-logo"><i class="fas fa-heart"></i></div>
+      <div>
+        <div style="font-size:13px;letter-spacing:2px;opacity:0.7;text-transform:uppercase;margin-bottom:4px;">Soctech</div>
+        <h2>FAIR 2026</h2>
+      </div>
+    </div>
+    <div class="cta-banner-right">
+      <a href="#" class="btn btn-red" style="font-size:13px;padding:14px 36px;">Register <i class="fas fa-arrow-right"></i></a>
+      <div class="cta-banner-date">250th Registered · April 23 to July 15 2026</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer-grid">
+
+      <!-- Seal -->
+      <div>
+        <div class="footer-seal">PH<br>Republic<br>Seal</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">Republika ng Pilipinas<br>Department of Social Welfare and Development</p>
+      </div>
+
+      <!-- Logos -->
+      <div class="footer-logos-col">
+        <div class="footer-logo-box">DSWD Logo</div>
+        <div class="footer-logo-box">STB Logo</div>
+        <div class="footer-logo-box">Bagong Pilipinas</div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:8px;">Copyright &copy; Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.</p>
+      </div>
+
+      <!-- Government Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Government Links</h4>
+        <ul>
+          <li><a href="#">Office of the President</a></li>
+          <li><a href="#">Office of the Vice President</a></li>
+          <li><a href="#">Senate of the Philippines</a></li>
+          <li><a href="#">House of Representatives</a></li>
+          <li><a href="#">Supreme Court</a></li>
+          <li><a href="#">Sandiganbayan</a></li>
+        </ul>
+      </div>
+
+      <!-- Other Resources -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Other Resources</h4>
+        <ul>
+          <li><a href="#">Data Privacy</a></li>
+          <li><a href="#">Citizen's Charter</a></li>
+          <li><a href="#">Freedom of Information (FOI)</a></li>
+          <li><a href="#">Transparency Seal</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <p><strong>Contact Numbers:</strong><br>02-8951-7124</p>
+          <br>
+          <p><strong>Email Address:</strong><br>soctech@dswd.gov.ph</p>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow our Socials</h4>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy; 2026 Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

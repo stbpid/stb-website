@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Newsletter — The Innovator — Social Technology Bureau</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    .article-author-line {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+    }
+    .article-author-line span { color: var(--text-light); font-weight: 400; }
+
+    .featured-stories-section { background: var(--bg-light); }
+
+    /* Pagination placeholder */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 48px;
+    }
+    .page-num {
+      width: 36px; height: 36px;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-medium);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .page-num.active, .page-num:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-logos">
+        <div class="header-logo-box dswd-main">DSWD<br>Logo</div>
+        <div class="header-logo-box">STB<br>Logo</div>
+        <div class="header-logo-box">Bagong<br>Pilipinas</div>
+      </div>
+      <div class="header-contact">
+        <a href="tel:028951724"><i class="fas fa-phone"></i> 02-8951-7124</a>
+        <a href="mailto:soctech@dswd.gov.ph"><i class="fas fa-envelope"></i> soctech@dswd.gov.ph</a>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Social Technologies</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="newsletter.html" class="active">E-Newsletter</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-cert-logos">
+        <div class="nav-cert-logo">ISO<br>Cert</div>
+        <div class="nav-cert-logo">Award<br>Seal</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       THE INNOVATOR BANNER
+  ============================================================ -->
+  <div class="innovator-banner" aria-label="The Innovator Newsletter Banner">
+    <div class="innovator-banner-bg" aria-hidden="true"></div>
+    <div style="position:absolute;inset:0;">
+      <img src="https://placehold.co/1920x280/0d1b3e/1b3a6b?text=+" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.5;" aria-hidden="true" />
+    </div>
+    <div class="innovator-banner-content">
+      <h1>THE INNOVAT<span style="color:#e8c84a;">O</span>R</h1>
+      <p>The Official Newsletter of the Social Technology Bureau</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       INNOVATOR HIGHLIGHTS
+  ============================================================ -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Lorem Ipsum</span>
+        <h2 class="section-title">Innovator Highlights</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Featured Article Card -->
+      <div class="featured-article-card reveal">
+        <div class="featured-article-img">
+          <img src="https://placehold.co/1200x320/c5d5ea/8fa3bc?text=Featured+Article+Photo" alt="STB Crafts the Social Technology Agenda" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="featured-article-body">
+          <div class="article-author-line">
+            Jay Pineda <span>| 19 March 2026</span>
+          </div>
+          <h2>STB Crafts the Social Technology Agenda for the next six years</h2>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna. Nunc nec ultrices massa, pretium rhoncus nulla. Etiam lectus ante, facilisis non tempor ac, imperdiet in dolor. Etiam rutrum erat.</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURED STORIES
+  ============================================================ -->
+  <section class="featured-stories-section section-pad">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title">Featured Stories</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="stories-grid reveal">
+
+        <!-- Row 1 -->
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="story-card">
+          <h3>Lorem Ipsum</h3>
+          <div class="article-author-line">Jay Pineda <span>| 19 March 2026</span></div>
+          <p>In viverra accumsan ante, eu scelerisque urna fringilla non. Maecenas et rhoncus purus, maximus commodo urna fringilla</p>
+          <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination reveal" aria-label="Pagination">
+        <div class="page-num active">1</div>
+        <div class="page-num">2</div>
+        <div class="page-num">3</div>
+        <div class="page-num">4</div>
+        <div class="page-num">5</div>
+        <div class="page-num"><i class="fas fa-chevron-right"></i></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-seal">PH<br>Republic<br>Seal</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">Republika ng Pilipinas<br>Department of Social Welfare and Development</p>
+      </div>
+      <div class="footer-logos-col">
+        <div class="footer-logo-box">DSWD Logo</div>
+        <div class="footer-logo-box">STB Logo</div>
+        <div class="footer-logo-box">Bagong Pilipinas</div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:8px;">Copyright &copy; Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Government Links</h4>
+        <ul>
+          <li><a href="#">Office of the President</a></li>
+          <li><a href="#">Office of the Vice President</a></li>
+          <li><a href="#">Senate of the Philippines</a></li>
+          <li><a href="#">House of Representatives</a></li>
+          <li><a href="#">Supreme Court</a></li>
+          <li><a href="#">Sandiganbayan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Other Resources</h4>
+        <ul>
+          <li><a href="#">Data Privacy</a></li>
+          <li><a href="#">Citizen's Charter</a></li>
+          <li><a href="#">Freedom of Information (FOI)</a></li>
+          <li><a href="#">Transparency Seal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <p><strong>Contact Numbers:</strong><br>02-8951-7124</p>
+          <br>
+          <p><strong>Email Address:</strong><br>soctech@dswd.gov.ph</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow our Socials</h4>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy; 2026 Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

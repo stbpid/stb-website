@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — Social Technology Bureau</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .file-name-link { color: var(--text-dark); transition: color var(--transition); }
+    .file-name-link:hover { color: var(--primary-blue); text-decoration: underline; }
+    .empty-state { padding: 48px 0; text-align: center; color: var(--text-light); font-size: 14px; }
+    .empty-state i { font-size: 40px; margin-bottom: 12px; display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-logos">
+        <div class="header-logo-box dswd-main">DSWD<br>Logo</div>
+        <div class="header-logo-box">STB<br>Logo</div>
+        <div class="header-logo-box">Bagong<br>Pilipinas</div>
+      </div>
+      <div class="header-contact">
+        <a href="tel:028951724"><i class="fas fa-phone"></i> 02-8951-7124</a>
+        <a href="mailto:soctech@dswd.gov.ph"><i class="fas fa-envelope"></i> soctech@dswd.gov.ph</a>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Social Technologies</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
+          <li><a href="newsletter.html">E-Newsletter</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-cert-logos">
+        <div class="nav-cert-logo">ISO<br>Cert</div>
+        <div class="nav-cert-logo">Award<br>Seal</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PAGE TITLE
+  ============================================================ -->
+  <section class="resources-header-section">
+    <div class="container">
+      <div class="reveal" style="padding-bottom:32px;">
+        <span class="label-tag">Social Technology Unit</span>
+        <h1 class="section-title-lg">STB Resources</h1>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Access and download official laws, issuances, publications, forms, templates, presentations, and orientation videos from the Social Technology Bureau.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TABS + RESOURCE TABLE
+  ============================================================ -->
+  <section class="resources-tabs-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="resources-tabs-nav" role="tablist" aria-label="Resource Categories">
+          <button class="resource-tab-btn active" data-tab="laws" role="tab" aria-selected="true">Laws and Issuance</button>
+          <button class="resource-tab-btn" data-tab="publications" role="tab" aria-selected="false">Publications</button>
+          <button class="resource-tab-btn" data-tab="forms" role="tab" aria-selected="false">Forms</button>
+          <button class="resource-tab-btn" data-tab="templates" role="tab" aria-selected="false">Templates</button>
+          <button class="resource-tab-btn" data-tab="presentation" role="tab" aria-selected="false">Presentation</button>
+          <button class="resource-tab-btn" data-tab="videos" role="tab" aria-selected="false">Orientation Videos</button>
+        </div>
+
+        <!-- LAWS AND ISSUANCE -->
+        <div class="resource-tab-content active" data-content="laws" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">AO No. 06 S. 2016 – Enhanced Guidelines on Social Technology Development</a></td>
+                  <td>13 March 2021</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file" aria-label="View AO No. 06 S. 2016"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file" aria-label="Download AO No. 06 S. 2016"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">AO No. 14 S. 2018 – Omnibus Guidelines on Social Technology Development</a></td>
+                  <td>26 June 2022</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">AO No. 34 S. 2003 – Framework for Social Technology Development</a></td>
+                  <td>20 May 2024</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">MC 06 S. 2011 – Guidelines on the Development of Social Technology Projects</a></td>
+                  <td>11 March 2025</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">MC No. 2 S. 2020 – Guidelines in Pilot-Testing of the Paghilom Program</a></td>
+                  <td>27 February 2019</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">MC No. 33 S. 2020 – Guidelines for the Implementation of Yakap Bayan</a></td>
+                  <td>31 January 2021</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PUBLICATIONS -->
+        <div class="resource-tab-content" data-content="publications" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">STB Annual Report 2023</a></td>
+                  <td>15 February 2024</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Social Technology Compendium Vol. 1</a></td>
+                  <td>01 June 2023</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">The Innovator Newsletter Issue 1</a></td>
+                  <td>19 March 2026</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- FORMS -->
+        <div class="resource-tab-content" data-content="forms" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">MOA Template for LGU Partners</a></td>
+                  <td>05 January 2024</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Expression of Interest Form – Social Technology Replication</a></td>
+                  <td>12 March 2023</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Monitoring and Evaluation Form v2</a></td>
+                  <td>30 August 2023</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TEMPLATES -->
+        <div class="resource-tab-content" data-content="templates" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">Social Technology Development Plan Template</a></td>
+                  <td>22 April 2022</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Training Design Template for STB Programs</a></td>
+                  <td>07 September 2023</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PRESENTATION -->
+        <div class="resource-tab-content" data-content="presentation" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">SocTech Fair 2026 – Opening Ceremony Presentation</a></td>
+                  <td>23 April 2026</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Flagship Social Technologies Overview Deck</a></td>
+                  <td>10 January 2025</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
+                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ORIENTATION VIDEOS -->
+        <div class="resource-tab-content" data-content="videos" role="tabpanel">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:55%;">File Name</th>
+                  <th style="width:25%;">Published Date</th>
+                  <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" class="file-name-link">Social Technology Development Process – Orientation Video</a></td>
+                  <td>01 March 2024</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
+                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">ProtectTEEN Program Implementation Guide Video</a></td>
+                  <td>14 August 2023</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
+                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#" class="file-name-link">Yakap Bayan – LGU Orientation Video</a></td>
+                  <td>25 November 2022</td>
+                  <td>
+                    <div class="action-icons" style="justify-content:center;">
+                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
+                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-seal">PH<br>Republic<br>Seal</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">Republika ng Pilipinas<br>Department of Social Welfare and Development</p>
+      </div>
+      <div class="footer-logos-col">
+        <div class="footer-logo-box">DSWD Logo</div>
+        <div class="footer-logo-box">STB Logo</div>
+        <div class="footer-logo-box">Bagong Pilipinas</div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:8px;">Copyright &copy; Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Government Links</h4>
+        <ul>
+          <li><a href="#">Office of the President</a></li>
+          <li><a href="#">Office of the Vice President</a></li>
+          <li><a href="#">Senate of the Philippines</a></li>
+          <li><a href="#">House of Representatives</a></li>
+          <li><a href="#">Supreme Court</a></li>
+          <li><a href="#">Sandiganbayan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Other Resources</h4>
+        <ul>
+          <li><a href="#">Data Privacy</a></li>
+          <li><a href="#">Citizen's Charter</a></li>
+          <li><a href="#">Freedom of Information (FOI)</a></li>
+          <li><a href="#">Transparency Seal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <p><strong>Contact Numbers:</strong><br>02-8951-7124</p>
+          <br>
+          <p><strong>Email Address:</strong><br>soctech@dswd.gov.ph</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow our Socials</h4>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy; 2026 Department of Social Welfare and Development. Social Technology Bureau. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
