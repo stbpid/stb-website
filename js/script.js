@@ -33,21 +33,23 @@ async function initComponents() {
 ------------------------------------------ */
 function initPage() {
 
-  /* ── SCROLL: HIDE HEADER-TOP, KEEP NAV ── */
-  const headerTop = document.querySelector('.header-top');
-  if (headerTop) {
-    const THRESHOLD = 10;   /* hide almost immediately on scroll */
+  /* ── SCROLL: HIDE HEADER-TOP, KEEP NAV STICKY ── */
+  const siteHeader = document.querySelector('.site-header');
+  const headerTop  = document.querySelector('.header-top');
+
+  if (siteHeader && headerTop) {
+    const THRESHOLD = 10;
 
     function onScroll() {
-      if (window.scrollY > THRESHOLD) {
-        headerTop.classList.add('hidden');
-      } else {
-        headerTop.classList.remove('hidden');
-      }
+      const scrolled = window.scrollY > THRESHOLD;
+      /* collapse the top info bar */
+      headerTop.classList.toggle('hidden', scrolled);
+      /* add a visual cue that the nav is now floating */
+      siteHeader.classList.toggle('scrolled', scrolled);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* run once on load in case page is already scrolled */
+    onScroll(); /* run once on load */
   }
 
   /* ── ACTIVE NAV LINK ── */

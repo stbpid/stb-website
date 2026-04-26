@@ -185,6 +185,11 @@ ul, ol { list-style: none; }
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
 
+/* When scrolled: nav bar gets a slightly stronger shadow to float above content */
+.site-header.scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
 .header-top {
   display: flex;
   align-items: center;
@@ -278,7 +283,7 @@ ul, ol { list-style: none; }
   display: flex;
   align-items: center;
   padding: 0 16px;
-  height: 56px;                 /* fixed row height so underline has a clean anchor */
+  height: 56px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.8px;
@@ -287,19 +292,35 @@ ul, ol { list-style: none; }
   position: relative;
   white-space: nowrap;
   transition: color var(--transition);
-  border-bottom: 3px solid transparent;   /* reserve 3px so height stays fixed */
-  box-sizing: border-box;
+  /* no border-bottom — underline drawn via ::after so it hugs the text */
 }
 
-/* Blue underline: spans full item width, sits at the very bottom of the 56px row */
+/* Underline tight under the text characters */
+.main-nav li > a::after {
+  content: '';
+  position: absolute;
+  /* measure from the text baseline: sits ~6px above the cell bottom */
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  /* width matches the rendered text — use ch-based approx or let it shrink to text */
+  width: calc(100% - 32px); /* full text zone (cell width minus left+right padding) */
+  height: 3px;
+  background: var(--primary-blue);
+  border-radius: 2px;
+  transform-origin: left center;
+  transition: transform 0.22s ease;
+}
+
 .main-nav li > a:hover,
 .main-nav li > a.active {
   color: var(--primary-blue);
-  border-bottom-color: var(--primary-blue);
 }
 
-/* Remove the pseudo-element approach entirely */
-.main-nav li > a::after { display: none; }
+.main-nav li > a:hover::after,
+.main-nav li > a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
 
 .nav-cert-logos {
   display: flex;
@@ -598,6 +619,18 @@ ul, ol { list-style: none; }
   margin-bottom: 24px;
   opacity: 0.9;
   line-height: 1.7;
+}
+
+/* Flavor text — slightly larger, italic, sits between h1 and button */
+.hero-flavor {
+  font-size: 15px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+  opacity: 0.88;
+  margin-bottom: 28px;
+  max-width: 520px;
+  letter-spacing: 0.1px;
 }
 
 /* Dots — bottom center */
@@ -1686,6 +1719,8 @@ ul, ol { list-style: none; }
   /* Tablet nav: shrink padding & font so all 6 items fit in one row */
   .header-nav-wrapper { padding: 0 16px; }
   .main-nav li > a { padding: 0 9px; height: 52px; font-size: 11px; letter-spacing: 0.3px; }
+  /* Adjust underline width to match new padding */
+  .main-nav li > a::after { width: calc(100% - 18px); }
   .nav-search input { width: 110px; }
   /* cert logos: smaller on tablet */
   .nav-cert-logo { width: 38px; height: 38px; }
