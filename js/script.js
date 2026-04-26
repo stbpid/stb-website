@@ -33,17 +33,21 @@ async function initComponents() {
 ------------------------------------------ */
 function initPage() {
 
-  /* ── SCROLL: HIDE HEADER-TOP ── */
+  /* ── SCROLL: HIDE HEADER-TOP, KEEP NAV ── */
   const headerTop = document.querySelector('.header-top');
   if (headerTop) {
-    const THRESHOLD = 60;
-    window.addEventListener('scroll', () => {
+    const THRESHOLD = 10;   /* hide almost immediately on scroll */
+
+    function onScroll() {
       if (window.scrollY > THRESHOLD) {
         headerTop.classList.add('hidden');
       } else {
         headerTop.classList.remove('hidden');
       }
-    }, { passive: true });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); /* run once on load in case page is already scrolled */
   }
 
   /* ── ACTIVE NAV LINK ── */

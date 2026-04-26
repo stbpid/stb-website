@@ -192,25 +192,22 @@ ul, ol { list-style: none; }
   padding: 10px 40px;
   border-bottom: 1px solid var(--border-light);
   background: #f9fafb;
-  /* smooth collapse on scroll */
-  max-height: 80px;
+  /* measured height so transition has a real from→to */
+  max-height: 72px;
   opacity: 1;
   overflow: hidden;
-  will-change: max-height, opacity;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              padding-top    0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              padding-bottom 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity        0.3s ease,
-              border-color   0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding    0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity    0.3s ease;
 }
 
 .header-top.hidden {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   opacity: 0;
-  border-color: transparent;
   pointer-events: none;
+  border-bottom-color: transparent;
 }
 
 .header-logos {
@@ -270,49 +267,39 @@ ul, ol { list-style: none; }
 
 .main-nav {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+}
+
+.main-nav li {
+  display: flex;
 }
 
 .main-nav li > a {
-  display: inline-flex;
-  flex-direction: column;
+  display: flex;
   align-items: center;
-  padding: 20px 15px 16px;
+  padding: 0 16px;
+  height: 56px;                 /* fixed row height so underline has a clean anchor */
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--text-dark);
   position: relative;
+  white-space: nowrap;
   transition: color var(--transition);
+  border-bottom: 3px solid transparent;   /* reserve 3px so height stays fixed */
+  box-sizing: border-box;
 }
 
-/* Underline sits immediately under the text characters, not the full cell */
-.main-nav li > a::after {
-  content: '';
-  display: block;
-  /* width controlled by text content via max-content trick */
-  width: 100%;
-  height: 3px;
-  background: var(--primary-blue);
-  border-radius: 2px;
-  margin-top: 4px;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.25s ease;
-  /* pull it up so it sits just under the letters, above the cell bottom */
-  position: static;
-}
-
+/* Blue underline: spans full item width, sits at the very bottom of the 56px row */
 .main-nav li > a:hover,
 .main-nav li > a.active {
   color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
 }
 
-.main-nav li > a:hover::after,
-.main-nav li > a.active::after {
-  transform: scaleX(1);
-}
+/* Remove the pseudo-element approach entirely */
+.main-nav li > a::after { display: none; }
 
 .nav-cert-logos {
   display: flex;
@@ -1696,9 +1683,9 @@ ul, ol { list-style: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item { border-right: none; border-bottom: 1px solid var(--border-light); }
 
-  /* Tablet nav: shrink link padding & font so all 6 items fit */
+  /* Tablet nav: shrink padding & font so all 6 items fit in one row */
   .header-nav-wrapper { padding: 0 16px; }
-  .main-nav li > a { padding: 16px 9px 12px; font-size: 11px; letter-spacing: 0.3px; }
+  .main-nav li > a { padding: 0 9px; height: 52px; font-size: 11px; letter-spacing: 0.3px; }
   .nav-search input { width: 110px; }
   /* cert logos: smaller on tablet */
   .nav-cert-logo { width: 38px; height: 38px; }
@@ -1754,21 +1741,24 @@ ul, ol { list-style: none; }
   }
 
   .main-nav li > a {
+    height: auto;                          /* override the fixed 56px desktop height */
     padding: 14px 20px;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light) !important;  /* row divider */
+    border-left: none;
     color: var(--text-dark);
+    white-space: normal;
   }
 
-  /* underline becomes left-border accent on mobile */
-  .main-nav li > a::after { display: none; }
+  /* Active/hover: left accent bar instead of bottom underline */
   .main-nav li > a.active,
   .main-nav li > a:hover {
     color: var(--primary-blue);
     background: #f0f4ff;
-    border-left: 3px solid var(--primary-blue);
+    border-bottom-color: var(--border-light) !important;
+    border-left: 3px solid var(--primary-blue) !important;
     padding-left: 17px;
   }
 
