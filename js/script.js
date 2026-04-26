@@ -156,9 +156,9 @@ function initPage() {
   /* ── FLAGSHIP CAROUSEL ── */
   const flagshipWrapper = document.querySelector('.flagship-carousel-wrapper');
   if (flagshipWrapper) {
-    const track  = flagshipWrapper.querySelector('.flagship-track');
-    const cards  = track.querySelectorAll('.flagship-card');
-    let flagIdx  = 0;
+    const track = flagshipWrapper.querySelector('.flagship-track');
+    const cards = track.querySelectorAll('.flagship-card');
+    let flagIdx = 0;
 
     function visibleCount() {
       return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
@@ -167,9 +167,63 @@ function initPage() {
     function slideTo(n) {
       const max = Math.max(0, cards.length - visibleCount());
       flagIdx = Math.max(0, Math.min(n, max));
-      const cardW = cards[0].offsetWidth + 24;
+      const cardW = cards[0].offsetWidth + 20;
       track.style.transform = `translateX(-${flagIdx * cardW}px)`;
     }
+
+    /* ── Mouse drag ── */
+    let fDragStart = 0;
+    let fDragging  = false;
+
+    flagshipWrapper.addEventListener('mousedown', e => {
+      fDragStart = e.clientX;
+      fDragging  = true;
+      flagshipWrapper.classList.add('dragging');
+      track.style.transition = 'none';
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!fDragging) return;
+      const diff = e.clientX - fDragStart;
+      const cardW = cards[0].offsetWidth + 20;
+      track.style.transform = `translateX(${-flagIdx * cardW + diff}px)`;
+    });
+
+    window.addEventListener('mouseup', e => {
+      if (!fDragging) return;
+      fDragging = false;
+      flagshipWrapper.classList.remove('dragging');
+      track.style.transition = '';
+      const diff = e.clientX - fDragStart;
+      if (Math.abs(diff) > 60) {
+        slideTo(diff < 0 ? flagIdx + 1 : flagIdx - 1);
+      } else {
+        slideTo(flagIdx); /* snap back */
+      }
+    });
+
+    /* ── Touch swipe ── */
+    let fTouchStart = 0;
+    flagshipWrapper.addEventListener('touchstart', e => {
+      fTouchStart = e.touches[0].clientX;
+      track.style.transition = 'none';
+    }, { passive: true });
+
+    flagshipWrapper.addEventListener('touchmove', e => {
+      const diff = e.touches[0].clientX - fTouchStart;
+      const cardW = cards[0].offsetWidth + 20;
+      track.style.transform = `translateX(${-flagIdx * cardW + diff}px)`;
+    }, { passive: true });
+
+    flagshipWrapper.addEventListener('touchend', e => {
+      track.style.transition = '';
+      const diff = e.changedTouches[0].clientX - fTouchStart;
+      if (Math.abs(diff) > 50) {
+        slideTo(diff < 0 ? flagIdx + 1 : flagIdx - 1);
+      } else {
+        slideTo(flagIdx);
+      }
+    }, { passive: true });
 
     document.querySelector('.flagship-nav .prev')?.addEventListener('click', () => slideTo(flagIdx - 1));
     document.querySelector('.flagship-nav .next')?.addEventListener('click', () => slideTo(flagIdx + 1));
