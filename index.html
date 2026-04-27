@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Social Technology Bureau — DSWD</title>
+  <link rel="icon" type="image/webp" href="images/stb-new-logo.webp" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -12,8 +13,8 @@
     .newsletter-label { font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
     .innovator-home-card { background: var(--bg-light); border-radius: var(--radius-md); padding: 24px; }
     .innovator-home-img { width: 100%; height: 160px; background: #c5d5ea; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #8fa3bc; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
-    .gad-content h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .gad-content p { font-size: 13px; opacity: 0.85; margin-bottom: 16px; }
+    .gad-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 0; color: var(--text-dark); }
+    .gad-content p { font-size: 13px; color: var(--text-medium); margin-bottom: 16px; }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.revealed { opacity: 1; transform: none; }
   </style>
@@ -161,11 +162,11 @@
   ============================================================ -->
   <section class="flagship-section section-pad">
     <div class="container">
-      <div class="reveal">
-        <span class="label-tag">Our Core Innovations</span>
-        <h2 class="section-title">Flagship Social Technologies</h2>
-        <div class="section-divider"></div>
-        <p class="section-subtitle">Discover STB's leading social welfare innovations designed to address deep-rooted issues and respond to priority needs.</p>
+      <div class="reveal" style="text-align:center;">
+        <span class="label-tag" style="display:block;text-align:center;">Our Core Innovations</span>
+        <h2 class="section-title" style="text-align:center;">Flagship Social Technologies</h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle" style="max-width:600px;margin:0 auto;text-align:center;">Discover STB's leading social welfare innovations designed to address deep-rooted issues and respond to priority needs.</p>
       </div>
 
       <div class="flagship-carousel-outer reveal">
@@ -174,58 +175,63 @@
 
           <div class="flagship-card">
             <div class="flagship-card-img">
-              <img src="https://placehold.co/400x220/1b4f8a/ffffff?text=ProtectTEEN" alt="ProtectTEEN" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="/images/aruga-cover.webp" alt="Project Aruga" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="flagship-card-overlay">
-              <h3>ProtectTEEN</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <div class="flagship-card-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3>Project Aruga</h3>
+              <p>Project Aruga is a community based project that provides disability inclusive social protection to children with disabilities and their families. </p>
               <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="flagship-card">
             <div class="flagship-card-img">
-              <img src="https://placehold.co/400x220/1a5276/ffffff?text=Yakap+Bayan" alt="Yakap Bayan" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="/images/pbp-cover.webp" alt="Yakap Bayan" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="flagship-card-overlay">
-              <h3>Yakap Bayan</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <div class="flagship-card-icon"><i class="fas fa-hands-holding-child"></i></div>
+              <h3>Pamilya sa Bagong Pilipinas</h3>
+              <p>The Pamilya sa Bagong Pilipinas Program is a family development and welfare model that brings DSWD programs directly to families.</p>
               <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="flagship-card">
             <div class="flagship-card-img">
-              <img src="https://placehold.co/400x220/154360/ffffff?text=Paghilom" alt="Paghilom" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="/images/protecteen-cover.webp" alt="Paghilom" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="flagship-card-overlay">
-              <h3>Paghilom</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
+              <div class="flagship-card-icon"><i class="fas fa-heart"></i></div>
+              <h3>ProtecTEEN</h3>
+              <p>The ProtecTEEN program is a social welfare model fundamentally built upon a social contract with adolescent mothers and their families.</p>
               <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
 
-          <div class="flagship-card">
+          <!-- <div class="flagship-card">
             <div class="flagship-card-img">
-              <img src="https://placehold.co/400x220/1f3a6e/ffffff?text=ENABLE" alt="ENABLE" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="https://placehold.co/400x220/1f3a6e/ffffff?text=STB Program" alt="ENABLE" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="flagship-card-overlay">
-              <h3>ENABLE</h3>
+              <div class="flagship-card-icon"><i class="fas fa-universal-access"></i></div>
+              <h3>STB Program</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
               <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
-          </div>
+          </div> -->
 
-          <div class="flagship-card">
+          <!-- <div class="flagship-card">
             <div class="flagship-card-img">
-              <img src="https://placehold.co/400x220/1b3a6b/ffffff?text=BOOST" alt="BOOST" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="https://placehold.co/400x220/1b3a6b/ffffff?text=STB Program" alt="BOOST" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="flagship-card-overlay">
-              <h3>BOOST</h3>
+              <div class="flagship-card-icon"><i class="fas fa-rocket"></i></div>
+              <h3>STB Program</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</p>
               <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:11px;">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -284,7 +290,7 @@
           <div class="video-thumb">
             <img src="https://placehold.co/560x300/b8c9e0/ffffff?text=Video+Thumbnail" alt="STB Development Process Video Thumbnail" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
             <!-- <button class="play-btn" aria-label="Play video"><i class="fas fa-play"></i></button> -->
-            <button class="play-btn" aria-label="Play STB Introduction Video" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"><i class="fas fa-play"></i></button>
+            <button class="play-btn" aria-label="Play STB Introduction Video"><i class="fas fa-play"></i></button>
           </div>
         </div>
       </div>
@@ -297,16 +303,48 @@
   <section class="newsletter-home-section section-pad" style="background:var(--white);border-top:1px solid var(--border-light);">
     <div class="container">
       <div class="reveal">
-        <span class="label-tag">Lorem Ipsum</span>
-        <h2 class="newsletter-label">The Innovator</h2>
+        <span class="label-tag">STB E-Newsletter</span>
+        <h2 class="section-title">The Innovator</h2>
         <div class="section-divider"></div>
       </div>
-      <div class="innovator-home-card reveal" style="max-width:680px;">
-        <div class="innovator-home-img">
-          <img src="https://placehold.co/640x200/1b3a6b/ffffff?text=The+Innovator+Banner" alt="The Innovator Newsletter" style="width:100%;height:100%;object-fit:cover;" />
+      <div class="innovator-layout reveal">
+        <!-- Featured article -->
+        <div class="innovator-featured">
+          <div class="innovator-featured-img" style="height:240px;">
+            <img src="https://placehold.co/640x240/1b3a6b/ffffff?text=Featured+Article" alt="Featured Article" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;" />
+          </div>
+          <div class="innovator-featured-body">
+            <h3>STB Crafts the Social Technology Agenda for the Next Six Years</h3>
+            <p class="innovator-meta">
+              <span class="innovator-author">Jay Pineda</span> | 19 March 2026
+              <span class="article-tag tag-policy">Policy</span>
+            </p>
+            <p class="innovator-excerpt">The Social Technology Bureau convened its strategic planning conference last March, bringing together division chiefs, field officers, and partner agencies to shape the Bureau's social technology roadmap from 2026 to 2031. <br/><br/> The six-year agenda prioritizes scaling proven community-based programs, expanding partnerships with local government units, and integrating digital tools into social welfare delivery to reach the most vulnerable Filipinos.</p>
+            <a href="newsletter.html" class="read-more-link" style="font-size:11px;padding:8px 18px;">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-bottom:16px;">The official newsletter of the Social Technology Bureau. Stay updated with STB's latest programs, innovations, and community stories.</p>
-        <a href="newsletter.html" class="btn btn-primary">Read The Innovator <i class="fas fa-arrow-right"></i></a>
+        <!-- Sidebar -->
+        <div class="innovator-sidebar">
+          <div class="innovator-side-card">
+            <h4>Project Aruga Reaches 12,000 Families Across Mindanao</h4>
+            <p class="innovator-meta">
+              <span class="innovator-author">Kalel Enriquez</span> | 12 March 2026
+              <span class="article-tag tag-program">Program</span>
+            </p>
+            <p class="innovator-excerpt">STB's flagship disability-inclusive social protection program has expanded its reach to 42 municipalities across Mindanao providing comprehensive support ...</p>
+            <a href="newsletter.html" class="innovator-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="innovator-side-card">
+            <h4>ProtecTEEN Pilot Yields Promising Results in Visayas Region</h4>
+            <p class="innovator-meta">
+              <span class="innovator-author">Joseph Salavaria</span> | 5 March 2026
+              <span class="article-tag tag-research">Research</span>
+            </p>
+            <p class="innovator-excerpt">Early findings from the ProtecTEEN program's Visayas pilot show a significant reduction in repeat teenage pregnancies and improved family...</p>
+            <a href="newsletter.html" class="innovator-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <a href="newsletter.html" class="btn btn-outline-blue" style="width:100%;justify-content:center;letter-spacing:2px;">VIEW E-NEWSLETTER</a>
+        </div>
       </div>
     </div>
   </section>
@@ -314,21 +352,17 @@
   <!-- ============================================================
        DIRECTOR'S CORNER (separate section)
   ============================================================ -->
-  <section class="section-pad" style="background:var(--bg-light);">
-    <div class="container">
-      <div class="reveal">
-        <span class="label-tag">Leadership</span>
-        <h2 class="section-title">Director's Corner</h2>
-        <div class="section-divider"></div>
+  <section class="director-corner-section">
+    <div class="director-corner-inner">
+      <div class="director-corner-photo">
+        <img src="https://placehold.co/480x600/d0ddef/8fa3bc?text=Director+Photo" alt="Bureau Director" />
       </div>
-      <div class="director-grid reveal">
-        <div class="director-photo">
-          <img src="https://placehold.co/200x240/d0ddef/8fa3bc?text=Director+Photo" alt="Bureau Director" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
-        </div>
-        <div>
-          <p style="font-size:14px;color:#282828;line-height:1.8;margin-bottom:12px;">Director Helen Suzara leads the Social Technology Bureau with years of experience in creating new ways to help people in need. As the head of the department’s main office for research and growth, the Director works to turn fresh ideas into real world programs that protect Filipino families.</p>
-          <p style="font-size:14px;color:#282828;line-height:1.8;">By using simple and modern tools, Director Helen makes sure that every program is easy to use and truly helpful for the public. Through this leadership, the Bureau continues to find better ways to serve children, families, and communities across the country.</p>
-        </div>
+      <div class="director-corner-content reveal">
+        <span class="label-tag">Leadership</span>
+        <h2 class="section-title">Director’s Corner</h2>
+        <div class="section-divider"></div>
+        <p style="font-size:14px;color:#282828;line-height:1.85;margin-bottom:16px;">Director Helen Suzara leads the Social Technology Bureau with years of experience in creating new ways to help people in need. As the head of the department’s main office for research and growth, the Director works to turn fresh ideas into real world programs that protect Filipino families.</p>
+        <p style="font-size:14px;color:#282828;line-height:1.85;">By using simple and modern tools, Director Helen makes sure that every program is easy to use and truly helpful for the public. Through this leadership, the Bureau continues to find better ways to serve children, families, and communities across the country.</p>
       </div>
     </div>
   </section>
@@ -338,13 +372,13 @@
   ============================================================ -->
   <div class="gad-section-wrapper">
     <div class="gad-banner reveal">
-      <div class="gad-banner-visual">
-        <img src="https://placehold.co/200x140/8a2be2/ffffff?text=GAD+Visual" alt="Gender and Development Visual" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
-      </div>
       <div class="gad-content">
-        <h3>Gender and Development (GAD)</h3>
-        <p>Explore the Bureau's Gender and Development corner — resources, programs, and initiatives that promote gender equality and women's empowerment.</p>
-        <a href="#" class="btn btn-outline">Visit the Bureau's GAD Corner <i class="fas fa-arrow-right"></i></a>
+        <h2 class="section-title">Gender and Development (GAD)</h2>
+        <div class="section-divider" style="margin:10px 0 20px;"></div>
+        <a href="#" class="btn btn-primary" style="font-size:11px;letter-spacing:1.5px;">STB GAD Corner <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="gad-banner-visual">
+        <img src="/images/gad-logo.webp" alt="Gender and Development Visual" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);" />
       </div>
     </div>
   </div>

@@ -178,8 +178,10 @@ function initPage() {
     }
 
     function peekOffset() {
-      /* Shift track left by peek amount so the prev card peeks from left */
-      return allCards()[0].offsetWidth * PEEK_RATIO + GAP;
+      /* Center the active card within the wrapper */
+      const wrapperWidth = flagshipWrapper.offsetWidth;
+      const cw = allCards()[0].offsetWidth;
+      return (wrapperWidth - cw) / 2;
     }
 
     function updateActiveClass() {
