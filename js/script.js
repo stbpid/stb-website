@@ -153,25 +153,63 @@ function initPage() {
     startAuto();
   }
 
-  /* ── FLAGSHIP CAROUSEL ── */
+  /* ── FLAGSHIP CAROUSEL (infinite loop, peek 1/3 on sides) ── */
   const flagshipWrapper = document.querySelector('.flagship-carousel-wrapper');
   if (flagshipWrapper) {
-    const track = flagshipWrapper.querySelector('.flagship-track');
-    const cards = track.querySelectorAll('.flagship-card');
-    let flagIdx = 0;
+    const track        = flagshipWrapper.querySelector('.flagship-track');
+    const origCards    = Array.from(track.querySelectorAll('.flagship-card'));
+    const PEEK_RATIO   = 1 / 3; // fraction of card width shown on each side
+    const GAP          = 20;
 
-    function visibleCount() {
-      return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    /* Clone first + last card for seamless infinite loop */
+    const cloneFirst = origCards[0].cloneNode(true);
+    const cloneLast  = origCards[origCards.length - 1].cloneNode(true);
+    track.appendChild(cloneFirst);
+    track.insertBefore(cloneLast, origCards[0]);
+
+    /* All cards including clones */
+    const allCards = () => Array.from(track.querySelectorAll('.flagship-card'));
+
+    /* Real index in the extended list: cloneLast is at 0, origCards start at 1 */
+    let curIdx = 1; // start at first real card
+
+    function cardWidth() {
+      return allCards()[0].offsetWidth + GAP;
     }
 
-    function slideTo(n) {
-      const max = Math.max(0, cards.length - visibleCount());
-      flagIdx = Math.max(0, Math.min(n, max));
-      const cardW = cards[0].offsetWidth + 20;
-      track.style.transform = `translateX(-${flagIdx * cardW}px)`;
+    function peekOffset() {
+      /* Shift track left by peek amount so the prev card peeks from left */
+      return allCards()[0].offsetWidth * PEEK_RATIO + GAP;
     }
 
-    /* ── Mouse drag ── */
+    function updateActiveClass() {
+      allCards().forEach((c, i) => c.classList.toggle('active-card', i === curIdx));
+    }
+
+    function getTranslate(idx) {
+      return -(idx * cardWidth() - peekOffset());
+    }
+
+    function slideTo(idx, animate = true) {
+      curIdx = idx;
+      track.style.transition = animate ? 'transform 0.45s ease' : 'none';
+      track.style.transform  = `translateX(${getTranslate(curIdx)}px)`;
+      updateActiveClass();
+    }
+
+    /* After transition ends, silently jump when hitting a clone */
+    track.addEventListener('transitionend', () => {
+      const cards = allCards();
+      if (curIdx === 0) {
+        /* Landed on cloneLast → jump to real last */
+        slideTo(cards.length - 2, false);
+      } else if (curIdx === cards.length - 1) {
+        /* Landed on cloneFirst → jump to real first */
+        slideTo(1, false);
+      }
+    });
+
+    /* Mouse drag */
     let fDragStart = 0;
     let fDragging  = false;
 
@@ -185,24 +223,22 @@ function initPage() {
     window.addEventListener('mousemove', e => {
       if (!fDragging) return;
       const diff = e.clientX - fDragStart;
-      const cardW = cards[0].offsetWidth + 20;
-      track.style.transform = `translateX(${-flagIdx * cardW + diff}px)`;
+      track.style.transform = `translateX(${getTranslate(curIdx) + diff}px)`;
     });
 
     window.addEventListener('mouseup', e => {
       if (!fDragging) return;
       fDragging = false;
       flagshipWrapper.classList.remove('dragging');
-      track.style.transition = '';
       const diff = e.clientX - fDragStart;
       if (Math.abs(diff) > 60) {
-        slideTo(diff < 0 ? flagIdx + 1 : flagIdx - 1);
+        slideTo(diff < 0 ? curIdx + 1 : curIdx - 1);
       } else {
-        slideTo(flagIdx); /* snap back */
+        slideTo(curIdx);
       }
     });
 
-    /* ── Touch swipe ── */
+    /* Touch swipe */
     let fTouchStart = 0;
     flagshipWrapper.addEventListener('touchstart', e => {
       fTouchStart = e.touches[0].clientX;
@@ -211,23 +247,24 @@ function initPage() {
 
     flagshipWrapper.addEventListener('touchmove', e => {
       const diff = e.touches[0].clientX - fTouchStart;
-      const cardW = cards[0].offsetWidth + 20;
-      track.style.transform = `translateX(${-flagIdx * cardW + diff}px)`;
+      track.style.transform = `translateX(${getTranslate(curIdx) + diff}px)`;
     }, { passive: true });
 
     flagshipWrapper.addEventListener('touchend', e => {
-      track.style.transition = '';
       const diff = e.changedTouches[0].clientX - fTouchStart;
       if (Math.abs(diff) > 50) {
-        slideTo(diff < 0 ? flagIdx + 1 : flagIdx - 1);
+        slideTo(diff < 0 ? curIdx + 1 : curIdx - 1);
       } else {
-        slideTo(flagIdx);
+        slideTo(curIdx);
       }
     }, { passive: true });
 
-    document.querySelector('.flagship-nav .prev')?.addEventListener('click', () => slideTo(flagIdx - 1));
-    document.querySelector('.flagship-nav .next')?.addEventListener('click', () => slideTo(flagIdx + 1));
-    window.addEventListener('resize', () => slideTo(0));
+    document.querySelector('.flagship-nav .prev')?.addEventListener('click', () => slideTo(curIdx - 1));
+    document.querySelector('.flagship-nav .next')?.addEventListener('click', () => slideTo(curIdx + 1));
+
+    /* Init */
+    slideTo(1, false);
+    window.addEventListener('resize', () => slideTo(curIdx, false));
   }
 
   /* ── STAT COUNTER ANIMATION ── */
