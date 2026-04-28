@@ -337,6 +337,29 @@ function initPage() {
       alert('Video player not connected yet. Please link an actual video source.');
     });
   });
+
+  /* ── PARALLAX: hero slider backgrounds + director photo ── */
+  const heroBgs       = document.querySelectorAll('.hero-bg');
+  const directorPhoto = document.querySelector('.director-corner-photo img');
+
+  function applyParallax() {
+    const scrollY = window.scrollY;
+
+    heroBgs.forEach(bg => {
+      const rect   = bg.closest('.hero-slide').getBoundingClientRect();
+      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.25;
+      bg.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+    });
+
+    if (directorPhoto) {
+      const rect   = directorPhoto.closest('.director-corner-photo').getBoundingClientRect();
+      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2;
+      directorPhoto.style.transform = `translateY(${offset}px) scale(1.2)`;
+    }
+  }
+
+  window.addEventListener('scroll', applyParallax, { passive: true });
+  applyParallax();
 }
 
 /* ── BOOT ── */

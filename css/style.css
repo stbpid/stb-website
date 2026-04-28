@@ -626,6 +626,8 @@ body.header-collapsed {
   background-size: cover;
   background-position: center;
   background-color: #1b3a6b;
+  will-change: background-position;
+  transition: background-position 0s linear;
 }
 
 .hero-overlay {
@@ -950,17 +952,18 @@ body.header-collapsed {
 }
 
 .flagship-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(255,255,255,0.5);
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  color: var(--white);
   margin-bottom: 12px;
+}
+
+.flagship-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .flagship-card-overlay h3 {
@@ -1282,7 +1285,7 @@ body.header-collapsed {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 380px;
-  max-height: 420px;
+  max-height: 480px;
 }
 
 .director-corner-photo {
@@ -1293,10 +1296,15 @@ body.header-collapsed {
 
 .director-corner-photo img {
   width: 100%;
-  height: 100%;
+  height: 130%;
   object-fit: cover;
   object-position: top center;
   display: block;
+  position: absolute;
+  top: -15%;
+  left: 0;
+  will-change: transform;
+  transition: transform 0s linear;
 }
 
 .director-corner-content {
