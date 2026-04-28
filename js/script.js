@@ -197,6 +197,13 @@ function initPage() {
       track.style.transition = animate ? 'transform 0.45s ease' : 'none';
       track.style.transform  = `translateX(${getTranslate(curIdx)}px)`;
       updateActiveClass();
+      updateFlagshipDots();
+    }
+
+    function updateFlagshipDots() {
+      const flagshipDots = document.querySelectorAll('.flagship-dot');
+      const realIdx = ((curIdx - 1) + origCards.length) % origCards.length;
+      flagshipDots.forEach((d, i) => d.classList.toggle('active', i === realIdx));
     }
 
     /* After transition ends, silently jump when hitting a clone */
@@ -263,6 +270,11 @@ function initPage() {
 
     document.querySelector('.flagship-nav .prev')?.addEventListener('click', () => slideTo(curIdx - 1));
     document.querySelector('.flagship-nav .next')?.addEventListener('click', () => slideTo(curIdx + 1));
+
+    /* Flagship pagination dots click */
+    document.querySelectorAll('.flagship-dot').forEach((dot, i) => {
+      dot.addEventListener('click', () => slideTo(i + 1));
+    });
 
     /* Init */
     slideTo(1, false);

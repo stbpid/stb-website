@@ -944,6 +944,28 @@ body.header-collapsed {
 
 .flagship-nav { display: none; }
 
+.flagship-dots {
+  display: none;
+  align-items: center;
+  gap: 6px;
+}
+
+.flagship-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(0,48,135,0.3);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), width var(--transition);
+}
+
+.flagship-dot.active {
+  background: var(--primary-blue);
+  width: 28px;
+  border-radius: 4px;
+}
+
 .carousel-btn {
   width: 42px; height: 42px;
   border-radius: 50%;
@@ -1004,7 +1026,8 @@ body.header-collapsed {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
+  background: none;
 }
 
 .video-thumb {
@@ -1206,7 +1229,8 @@ body.header-collapsed {
 .director-corner-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 540px;
+  min-height: 380px;
+  max-height: 420px;
 }
 
 .director-corner-photo {
@@ -1227,7 +1251,7 @@ body.header-collapsed {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 64px 56px;
+  padding: 40px 48px;
 }
 
 @media (max-width: 768px) {
@@ -1366,8 +1390,8 @@ body.header-collapsed {
 .stb-logo-mark {
   width: 80px; height: 80px;
   border-radius: 50%;
-  background: #f0f4ff;
-  border: 3px dashed #b0bcd4;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1999,6 +2023,18 @@ body.header-collapsed {
   /* cert logos: smaller on tablet */
   .nav-cert-logo { width: 38px; height: 38px; }
   .nav-cert-logos { gap: 6px; }
+
+  /* Tablet: section layout adjustments */
+  .about-cards-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .video-wrapper { gap: 32px; }
+  .innovator-layout { grid-template-columns: 1fr; }
+  .director-corner-content { padding: 48px 40px; }
+  .gad-banner { gap: 40px; }
+  .gad-banner-visual { flex: 0 0 320px; }
+  .section-pad { padding: 56px 0; }
+
+  /* Tablet footer fix */
+  .footer-seal-col { display: flex; align-items: center; }
 }
 
 /* ============================================
@@ -2089,13 +2125,15 @@ body.header-collapsed {
   /* --- Content --- */
   .hero-overlay { padding: 0 24px 72px; }
   .hero-content h1 { font-size: 22px; }
-  .hero-slider { height: 360px; }
+  .hero-slider { height: 420px; }
   .hero-controls { bottom: 18px; }
   .about-cards-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .flagship-card { flex: 0 0 100%; }
+  .flagship-nav { display: flex; justify-content: center; gap: 12px; margin-top: 16px; align-items: center; }
+  .flagship-dots { display: flex; }
   .impact-grid { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
-  .video-wrapper { grid-template-columns: 1fr; }
+  .video-wrapper { grid-template-columns: 1fr; gap: 28px; }
   .innovator-layout { grid-template-columns: 1fr; }
   .stb-intro-grid { grid-template-columns: 1fr; }
   .vision-mission-grid { grid-template-columns: 1fr; }
@@ -2105,10 +2143,14 @@ body.header-collapsed {
   .support-widget { grid-template-columns: 1fr; }
   .map-grid { grid-template-columns: 1fr; }
   .stories-grid { grid-template-columns: 1fr 1fr; }
+  .section-pad { padding: 48px 0; }
+  .stats-section { padding: 48px 0; }
+  .gad-banner { flex-direction: column; gap: 24px; }
+  .gad-banner-visual { flex: none; width: 100%; height: 180px; }
 
   /* --- Footer --- */
   .footer-inner { grid-template-columns: 1fr; padding: 32px 20px 0; }
-  .footer-seal-col { justify-content: flex-start; }
+  .footer-seal-col { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-logos-row { flex-wrap: wrap; gap: 12px; }
   .footer-bottom-bar { padding: 16px 20px; }
@@ -2129,7 +2171,7 @@ body.header-collapsed {
   .section-title-lg { font-size: 26px; }
   .hero-content h1 { font-size: 18px; }
   .hero-overlay { padding: 0 16px 68px; }
-  .hero-slider { height: 280px; }
+  .hero-slider { height: 360px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-inner { padding: 24px 16px 0; }
   .footer-logos-row { gap: 10px; }
@@ -2139,4 +2181,7 @@ body.header-collapsed {
   .gad-banner-visual { flex: none; width: 100%; height: 180px; }
   .gad-banner .section-divider { margin: 10px auto 20px; }
   .stories-grid { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .stat-number { font-size: 38px; }
+  .about-card-body h3 { font-size: 15px; }
 }
