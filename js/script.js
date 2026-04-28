@@ -338,17 +338,15 @@ function initPage() {
     });
   });
 
-  /* ── PARALLAX: hero slider backgrounds + director photo ── */
-  const heroBgs       = document.querySelectorAll('.hero-bg');
-  const directorPhoto = document.querySelector('.director-corner-photo img');
+  /* ── PARALLAX: hero slider images + director photo ── */
+  const heroParallaxImgs = document.querySelectorAll('.hero-parallax-img');
+  const directorPhoto    = document.querySelector('.director-corner-photo img');
 
   function applyParallax() {
-    const scrollY = window.scrollY;
-
-    heroBgs.forEach(bg => {
-      const rect   = bg.closest('.hero-slide').getBoundingClientRect();
-      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.25;
-      bg.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+    heroParallaxImgs.forEach(img => {
+      const rect   = img.closest('.hero-slide').getBoundingClientRect();
+      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2;
+      img.style.transform = `translateY(${offset}px) scale(1.2)`;
     });
 
     if (directorPhoto) {
