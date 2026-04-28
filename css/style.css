@@ -878,13 +878,42 @@ body.header-collapsed {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 25, 60, 0);
   transition: background var(--transition);
   z-index: 1;
   pointer-events: none;
 }
-.flagship-card:hover::after {
-  background: rgba(13, 27, 62, 0.916);
+
+/* Project Aruga — #1c0b8b */
+.flagship-card[data-color="aruga"]::after {
+  background: rgba(28, 11, 139, 0.45);
+}
+.flagship-card[data-color="aruga"]:hover::after {
+  background: rgba(28, 11, 139, 0.88);
+}
+.flagship-card[data-color="aruga"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(28,11,139,0.95) 0%, rgba(28,11,139,0.6) 55%, transparent 100%);
+}
+
+/* Pamilya sa Bagong Pilipinas — #30699b */
+.flagship-card[data-color="pbp"]::after {
+  background: rgba(48, 105, 155, 0.45);
+}
+.flagship-card[data-color="pbp"]:hover::after {
+  background: rgba(48, 105, 155, 0.88);
+}
+.flagship-card[data-color="pbp"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(48,105,155,0.95) 0%, rgba(48,105,155,0.6) 55%, transparent 100%);
+}
+
+/* ProtecTEEN — #86348b */
+.flagship-card[data-color="protecteen"]::after {
+  background: rgba(134, 52, 139, 0.45);
+}
+.flagship-card[data-color="protecteen"]:hover::after {
+  background: rgba(134, 52, 139, 0.88);
+}
+.flagship-card[data-color="protecteen"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(134,52,139,0.95) 0%, rgba(134,52,139,0.6) 55%, transparent 100%);
 }
 
 /* Image fills the full card */
