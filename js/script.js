@@ -331,6 +331,79 @@ function initPage() {
     revealEls.forEach(el => ro.observe(el));
   }
 
+  /* ── PHILIPPINE MAP HOVER + CLICK INTERACTION ── */
+  const phMap      = document.getElementById('ph-map');
+  const tooltip    = document.getElementById('ph-map-tooltip');
+  const legendList = document.getElementById('stats-legend-list');
+
+  if (phMap && tooltip && legendList) {
+    const regionData = {
+      'NCR':  { name: 'NCR - National Capital Region',          href: 'contact.html' },
+      'I':    { name: 'Region I - Ilocos Region',               href: 'contact.html' },
+      'CAR':  { name: 'CAR - Cordillera Administrative Region', href: 'contact.html' },
+      'II':   { name: 'Region II - Cagayan Valley',             href: 'contact.html' },
+      'III':  { name: 'Region III - Central Luzon',             href: 'contact.html' },
+      'IVA':  { name: 'Region IV-A - CALABARZON',               href: 'contact.html' },
+      'IVB':  { name: 'Region IV-B - MIMAROPA',                 href: 'contact.html' },
+      'V':    { name: 'Region V - Bicol Region',                href: 'contact.html' },
+      'VI':   { name: 'Region VI - Western Visayas',            href: 'contact.html' },
+      'VII':  { name: 'Region VII - Central Visayas',           href: 'contact.html' },
+      'VIII': { name: 'Region VIII - Eastern Visayas',          href: 'contact.html' },
+      'IX':   { name: 'Region IX - Zamboanga Peninsula',        href: 'contact.html' },
+      'X':    { name: 'Region X - Northern Mindanao',           href: 'contact.html' },
+      'XI':   { name: 'Region XI - Davao Region',               href: 'contact.html' },
+      'XII':  { name: 'Region XII - SOCCSKSARGEN',              href: 'contact.html' },
+      'XIII': { name: 'Region XIII - CARAGA',                   href: 'contact.html' },
+      'ARMM': { name: 'BARMM - Bangsamoro',                     href: 'contact.html' },
+      'NIR':  { name: 'NIR - Negros Island Region',             href: 'contact.html' },
+    };
+
+    function highlightLegend(regionId) {
+      legendList.querySelectorAll('li').forEach(li => {
+        li.classList.toggle('active', li.dataset.region === regionId);
+      });
+      const active = legendList.querySelector('li.active');
+      if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function clearHighlight() {
+      legendList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+      phMap.querySelectorAll('path.map-active').forEach(p => p.classList.remove('map-active'));
+      tooltip.textContent = 'Hover a region on the map';
+    }
+
+    phMap.querySelectorAll('path[id]').forEach(path => {
+      const id = path.id;
+      const data = regionData[id];
+      if (data) path.setAttribute('title', data.name);
+
+      path.addEventListener('mouseenter', () => {
+        tooltip.textContent = (data ? data.name : id) + ' — click to view';
+        highlightLegend(id);
+      });
+      path.addEventListener('mouseleave', clearHighlight);
+      path.addEventListener('click', () => {
+        if (data && data.href) window.location.href = data.href;
+      });
+    });
+
+    legendList.querySelectorAll('li[data-region]').forEach(li => {
+      li.addEventListener('mouseenter', () => {
+        const id = li.dataset.region;
+        const path = phMap.querySelector('#' + CSS.escape(id));
+        if (path) path.classList.add('map-active');
+        const data = regionData[id];
+        tooltip.textContent = (data ? data.name : id) + ' — click to view';
+        li.classList.add('active');
+      });
+      li.addEventListener('mouseleave', clearHighlight);
+      li.addEventListener('click', () => {
+        const href = li.dataset.href;
+        if (href) window.location.href = href;
+      });
+    });
+  }
+
   /* ── VIDEO PLAY BUTTON (placeholder) ── */
   document.querySelectorAll('.play-btn').forEach(btn => {
     btn.addEventListener('click', () => {
