@@ -813,7 +813,7 @@ body.header-collapsed {
   display: grid;
   grid-template-columns: 220px 1fr 300px;
   gap: 32px;
-  align-items: start;
+  align-items: stretch;
   margin-top: 40px;
 }
 
@@ -825,6 +825,7 @@ body.header-collapsed {
 
 .stats-cards-col .stat-item {
   padding: 24px 20px 20px;
+  flex: 1;
 }
 
 .stats-cards-col .stat-number {
@@ -841,6 +842,8 @@ body.header-collapsed {
 .ph-map-wrap {
   position: relative;
   width: 100%;
+  background: none;
+  border: none;
 }
 
 #ph-map {
@@ -879,8 +882,8 @@ body.header-collapsed {
 
 /* Legend box */
 .stats-legend-col {
-  position: sticky;
-  top: 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .stats-legend-box {
@@ -889,23 +892,28 @@ body.header-collapsed {
   border-radius: var(--radius-md);
   padding: 16px 14px;
   box-shadow: var(--shadow-sm);
-  max-height: 680px;
-  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .stats-legend-title {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
 }
 
 .stats-legend-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .stats-legend-list li {
@@ -2375,7 +2383,14 @@ body.header-collapsed {
   .about-cards-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-map-layout { grid-template-columns: 1fr; }
-  .stats-legend-col { position: static; }
+  .stats-legend-col { position: static; max-height: none; }
+  .stats-legend-box { max-height: 340px; overflow: hidden; }
+  .stats-legend-list { overflow-y: scroll; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .stats-legend-list::-webkit-scrollbar { display: none; }
+  .innovator-featured-body { text-align: left; }
+  .innovator-side-card { text-align: left; }
+  .innovator-meta { text-align: left; }
+  .innovator-excerpt { text-align: left; }
   .flagship-card { flex: 0 0 100%; }
   .flagship-nav { display: flex; justify-content: center; gap: 12px; margin-top: 16px; align-items: center; }
   .flagship-nav .carousel-btn { display: none; }
