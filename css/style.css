@@ -404,6 +404,29 @@ body.header-collapsed {
 }
 
 /* Mobile menu toggle */
+/* Mobile-only logo row inside nav bar */
+.mobile-header-logos {
+  display: none;
+}
+
+.mobile-logo-box {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-logo-box img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.mobile-logo-dswd {
+  height: 36px;
+  width: 110px;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1255,9 +1278,17 @@ body.header-collapsed {
 }
 
 @media (max-width: 768px) {
-  .director-corner-inner { grid-template-columns: 1fr; }
-  .director-corner-photo { height: 340px; }
-  .director-corner-content { padding: 40px 24px; }
+  .director-corner-inner {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    max-height: unset;
+  }
+  .director-corner-photo { height: 280px; }
+  .director-corner-content {
+    padding: 32px 24px 40px;
+    background: var(--bg-light);
+  }
+  .director-corner-content p { color: #282828 !important; }
 }
 
 /* ============================================
@@ -2042,14 +2073,43 @@ body.header-collapsed {
    ============================================ */
 @media (max-width: 768px) {
   /* --- Header --- */
-  .header-top { padding: 10px 20px; }
+  /* Hide the top bar entirely on mobile; logos move into nav row */
+  .header-top {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+    border-bottom-color: transparent;
+    overflow: hidden;
+  }
+
+  body { padding-top: 56px; }
+  body.header-collapsed { padding-top: 56px; }
 
   .header-nav-wrapper {
     padding: 0 16px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
     flex-wrap: wrap;
     gap: 0;
   }
+
+  /* Show logos inside nav bar on mobile */
+  .mobile-header-logos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    order: -1;
+  }
+
+  .nav-right { gap: 8px; }
+  .nav-cert-logos { display: none; }
+  .nav-search { display: none; }
 
   /* Hide desktop nav, show hamburger */
   .main-nav {
@@ -2131,7 +2191,12 @@ body.header-collapsed {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .flagship-card { flex: 0 0 100%; }
   .flagship-nav { display: flex; justify-content: center; gap: 12px; margin-top: 16px; align-items: center; }
+  .flagship-nav .carousel-btn { display: none; }
   .flagship-dots { display: flex; }
+  .flagship-card-overlay p { width: auto; max-width: 100%; box-sizing: border-box; }
+  .flagship-card-overlay { padding: 20px 16px 16px; }
+  .flagship-card-overlay h3 { font-size: 15px; }
+  .flagship-card-overlay p { font-size: 13px; }
   .impact-grid { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
   .video-wrapper { grid-template-columns: 1fr; gap: 28px; }
   .innovator-layout { grid-template-columns: 1fr; }
@@ -2145,8 +2210,9 @@ body.header-collapsed {
   .stories-grid { grid-template-columns: 1fr 1fr; }
   .section-pad { padding: 48px 0; }
   .stats-section { padding: 48px 0; }
-  .gad-banner { flex-direction: column; gap: 24px; }
+  .gad-banner { flex-direction: column; gap: 24px; text-align: left; }
   .gad-banner-visual { flex: none; width: 100%; height: 180px; }
+  .gad-banner .section-divider { margin: 10px 0 20px; }
 
   /* --- Footer --- */
   .footer-inner { grid-template-columns: 1fr; padding: 32px 20px 0; }
@@ -2177,9 +2243,9 @@ body.header-collapsed {
   .footer-logos-row { gap: 10px; }
   .innovator-banner-content h1 { font-size: 36px; }
   .cta-banner h2 { font-size: 26px; }
-  .gad-banner { flex-direction: column; text-align: center; gap: 28px; }
+  .gad-banner { flex-direction: column; text-align: left; gap: 28px; }
   .gad-banner-visual { flex: none; width: 100%; height: 180px; }
-  .gad-banner .section-divider { margin: 10px auto 20px; }
+  .gad-banner .section-divider { margin: 10px 0 20px; }
   .stories-grid { grid-template-columns: 1fr; }
   .impact-grid { grid-template-columns: 1fr; gap: 24px; }
   .stat-number { font-size: 38px; }
