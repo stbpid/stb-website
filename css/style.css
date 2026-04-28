@@ -2035,19 +2035,26 @@ body.header-collapsed {
 }
 .contact-info-card {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
   align-items: flex-start;
   background: var(--white);
-  border: 1px solid var(--border-light);
+  /* border: 1px solid var(--border-light); */
   border-radius: var(--radius-md);
   padding: 28px 24px;
   box-shadow: var(--shadow-sm);
+  gap: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-blue);
 }
 .contact-info-card h4 {
   font-size: 14px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -2062,7 +2069,7 @@ body.header-collapsed {
   height: 44px;
   min-width: 44px;
   border-radius: 50%;
-  background: var(--primary);
+  background: var(--primary-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2072,11 +2079,29 @@ body.header-collapsed {
 
 /* Flavor text */
 .section-flavor {
-  font-size: 15px;
-  color: var(--text-medium);
+  font-size: 14px;
+  color: var(--text-light);
   max-width: 680px;
   line-height: 1.7;
   margin-top: 12px;
+}
+
+/* Widget flavor text */
+.widget-flavor {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Survey section — center text content vertically */
+.survey-text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.survey-text-center .btn {
+  align-self: flex-start;
 }
 
 /* Widget visual placeholder label */
@@ -2087,12 +2112,24 @@ body.header-collapsed {
   font-weight: 600;
 }
 
+/* Contact page — tablet */
 @media (max-width: 900px) {
-  .contact-info-grid { grid-template-columns: 1fr; }
+  .contact-info-grid { grid-template-columns: 1fr 1fr; }
   .map-banner-wrapper { height: 300px; }
+  .tabs-nav { flex-wrap: wrap; }
+  .tab-btn { padding: 10px 18px; }
+  .regional-stu-section { padding: 48px 0; }
 }
+/* Contact page — mobile */
 @media (max-width: 600px) {
-  .map-banner-wrapper { height: 300px; }
+  .contact-info-grid { grid-template-columns: 1fr; }
+  .map-banner-wrapper { height: 240px; }
+  .contact-info-card { padding: 20px 18px; }
+  .tab-btn { font-size: 12px; padding: 10px 14px; }
+  .data-table th, .data-table td { padding: 10px 12px; font-size: 12px; }
+  .section-title { font-size: 24px; }
+  .regional-stu-section { padding: 36px 0; }
+  .stu-desc { font-size: 13px; }
 }
 
 .address-block h3 {
@@ -2115,7 +2152,7 @@ body.header-collapsed {
 /* Regional STU */
 .regional-stu-section { background: var(--white); }
 
-.stu-desc { font-size: 13px; color: var(--text-light); margin-bottom: 32px; }
+.stu-desc { font-size: 14px; color: var(--text-light); margin-bottom: 32px; }
 
 /* Tabs */
 .tabs-nav {
