@@ -22,18 +22,16 @@
       align-items: stretch;
     }
     .widget-card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
       align-items: center;
-      padding: 48px 40px;
-      transition: box-shadow var(--transition);
+      padding: 0;
     }
-    .widget-card:hover { box-shadow: var(--shadow-md); }
 
     .widget-visual {
       width: 100%;
@@ -69,12 +67,13 @@
     <div class="container">
       <div class="reveal">
         <div class="widget-card">
-          <div class="widget-visual">
-            <img src="https://placehold.co/340x200/dde8f5/99b5d5?text=Ticketing+System+Illustration" alt="Ticketing System Illustration" />
-          </div>
           <div class="widget-text">
             <h2>Social Technology Bureau Ticketing System</h2>
-            <a href="#" class="btn btn-primary">Create New Request <i class="fas fa-arrow-right"></i></a>
+            <div class="section-divider" style="margin-bottom:20px;"></div>
+            <a href="#" class="btn btn-primary">CREATE NEW REQUEST <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="widget-visual">
+            <img src="images/ticketing-placeholder.webp" alt="Ticketing System Illustration" onerror="this.style.display='none';this.parentElement.setAttribute('data-label','[ Ticketing Image ]')" />
           </div>
         </div>
       </div>
@@ -89,11 +88,12 @@
       <div class="reveal">
         <div class="widget-card">
           <div class="widget-visual">
-            <img src="https://placehold.co/340x200/dde8f5/99b5d5?text=Survey+Illustration" alt="Customer Satisfaction Survey Illustration" />
+            <img src="images/survey-placeholder.webp" alt="Customer Satisfaction Survey Illustration" onerror="this.style.display='none';this.parentElement.setAttribute('data-label','[ Survey Image ]')" />
           </div>
           <div class="widget-text">
             <h2>Customer Satisfaction Survey</h2>
-            <a href="#" class="btn btn-primary">Access Survey Form <i class="fas fa-arrow-right"></i></a>
+            <div class="section-divider" style="margin-bottom:20px;"></div>
+            <a href="#" class="btn btn-primary">ACCESS SURVEY FORM <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -101,47 +101,55 @@
   </section>
 
   <!-- ============================================================
-       MAP & ADDRESS
+       MAP FULL WIDTH BANNER
+  ============================================================ -->
+  <div class="map-banner-wrapper reveal">
+    <iframe
+      title="DSWD Location Map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9!2d121.052!3d14.651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b11c0d45b4a1%3A0x5a8d5c2f8ed8e0!2sDepartment%20of%20Social%20Welfare%20and%20Development!5e0!3m2!1sen!2sph!4v1700000000000"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- ============================================================
+       CONTACT US SECTION
   ============================================================ -->
   <section class="map-address-section">
     <div class="container">
       <div class="reveal" style="margin-bottom:32px;">
-        <span class="label-tag">Lorem Ipsum</span>
+        <span class="label-tag">Get In Touch</span>
         <h2 class="section-title">Contact Us</h2>
         <div class="section-divider"></div>
+        <p class="section-flavor">We're here to help. Whether you have questions about our programs, need technical support, or want to connect with your regional Social Technology Unit — our team is ready to assist you. Reach out through any of the channels below.</p>
       </div>
 
-      <div class="map-grid reveal">
+      <!-- Address Cards -->
+      <div class="contact-info-grid reveal">
 
-        <!-- Map -->
-        <div class="map-iframe-wrapper">
-          <iframe
-            title="DSWD Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9!2d121.052!3d14.651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b11c0d45b4a1%3A0x5a8d5c2f8ed8e0!2sDepartment%20of%20Social%20Welfare%20and%20Development!5e0!3m2!1sen!2sph!4v1700000000000"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <!-- Address -->
-        <div class="address-block">
-          <h3>Department of Social Welfare and Development (DSWD)</h3>
-
-          <div class="address-item">
-            <i class="fas fa-map-marker-alt"></i>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Office Address</h4>
             <p>3RD Floor, Matapat Building<br>
                Department of Social Welfare And Development<br>
                Central Office IBP Road, Constitution Hills, Batasan Complex, Quezon City</p>
           </div>
+        </div>
 
-          <div class="address-item">
-            <i class="fas fa-phone"></i>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h4>Phone</h4>
             <p>02-8951-7124</p>
           </div>
+        </div>
 
-          <div class="address-item">
-            <i class="fas fa-envelope"></i>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
             <p>soctech@dswd.gov.ph</p>
           </div>
         </div>
@@ -179,7 +187,6 @@
                   <th>Focal Person</th>
                   <th>Division</th>
                   <th>Email Address</th>
-                  <th>Contact Number</th>
                 </tr>
               </thead>
               <tbody>
@@ -188,56 +195,48 @@
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>CAR (Cordillera)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region I (Ilocos)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region II (Cagayan Valley)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region III (Central Luzon)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region IV-A (CALABARZON)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region IV-B (MIMAROPA)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region V (Bicol)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
               </tbody>
             </table>
@@ -254,7 +253,6 @@
                   <th>Focal Person</th>
                   <th>Division</th>
                   <th>Email Address</th>
-                  <th>Contact Number</th>
                 </tr>
               </thead>
               <tbody>
@@ -263,21 +261,18 @@
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region VII (Central Visayas)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region VIII (Eastern Visayas)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
               </tbody>
             </table>
@@ -294,7 +289,6 @@
                   <th>Focal Person</th>
                   <th>Division</th>
                   <th>Email Address</th>
-                  <th>Contact Number</th>
                 </tr>
               </thead>
               <tbody>
@@ -303,42 +297,36 @@
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region X (Northern Mindanao)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region XI (Davao Region)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region XII (SOCCSKSARGEN)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>Region XIII (Caraga)</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
                 <tr>
                   <td>BARMM</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
                   <td>Lorem Ipsum</td>
-                  <td>09123456789</td>
                 </tr>
               </tbody>
             </table>

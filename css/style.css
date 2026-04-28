@@ -1073,6 +1073,61 @@ body.header-collapsed {
   background: linear-gradient(to top, rgba(134,52,139,0.95) 0%, rgba(134,52,139,0.6) 55%, transparent 100%);
 }
 
+/* Angel Pets — #ae1632 */
+.flagship-card[data-color="angelpets"]::after {
+  background: rgba(174, 22, 50, 0.45);
+}
+.flagship-card[data-color="angelpets"]:hover::after {
+  background: rgba(174, 22, 50, 0.88);
+}
+.flagship-card[data-color="angelpets"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(174,22,50,0.95) 0%, rgba(174,22,50,0.6) 55%, transparent 100%);
+}
+
+/* Kalinga — #805fcc */
+.flagship-card[data-color="kalinga"]::after {
+  background: rgba(128, 95, 204, 0.45);
+}
+.flagship-card[data-color="kalinga"]:hover::after {
+  background: rgba(128, 95, 204, 0.88);
+}
+.flagship-card[data-color="kalinga"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(128,95,204,0.95) 0%, rgba(128,95,204,0.6) 55%, transparent 100%);
+}
+
+/* Project SAFE — #f06d04 */
+.flagship-card[data-color="projectsafe"]::after {
+  background: rgba(240, 109, 4, 0.45);
+}
+.flagship-card[data-color="projectsafe"]:hover::after {
+  background: rgba(240, 109, 4, 0.88);
+}
+.flagship-card[data-color="projectsafe"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(240,109,4,0.95) 0%, rgba(240,109,4,0.6) 55%, transparent 100%);
+}
+
+/* Apo Ko — #eb3433 */
+.flagship-card[data-color="apoko"]::after {
+  background: rgba(235, 52, 51, 0.45);
+}
+.flagship-card[data-color="apoko"]:hover::after {
+  background: rgba(235, 52, 51, 0.88);
+}
+.flagship-card[data-color="apoko"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(235,52,51,0.95) 0%, rgba(235,52,51,0.6) 55%, transparent 100%);
+}
+
+/* Peace Project — #292e96 */
+.flagship-card[data-color="peaceproject"]::after {
+  background: rgba(41, 46, 150, 0.45);
+}
+.flagship-card[data-color="peaceproject"]:hover::after {
+  background: rgba(41, 46, 150, 0.88);
+}
+.flagship-card[data-color="peaceproject"] .flagship-card-overlay {
+  background: linear-gradient(to top, rgba(41,46,150,0.95) 0%, rgba(41,46,150,0.6) 55%, transparent 100%);
+}
+
 /* Image fills the full card */
 .flagship-card-img {
   width: 100%;
@@ -1956,6 +2011,88 @@ body.header-collapsed {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* Full-width map banner */
+.map-banner-wrapper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  line-height: 0;
+}
+.map-banner-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Contact info cards */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.contact-info-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.contact-info-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.contact-info-card p {
+  font-size: 14px;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin: 0;
+}
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+/* Flavor text */
+.section-flavor {
+  font-size: 15px;
+  color: var(--text-medium);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+/* Widget visual placeholder label */
+.widget-visual[data-label]::after {
+  content: attr(data-label);
+  font-size: 13px;
+  color: #8fa3bc;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .contact-info-grid { grid-template-columns: 1fr; }
+  .map-banner-wrapper { height: 300px; }
+}
+@media (max-width: 600px) {
+  .map-banner-wrapper { height: 300px; }
 }
 
 .address-block h3 {
