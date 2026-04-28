@@ -811,7 +811,7 @@ body.header-collapsed {
 /* ── Stats + Map 3-column layout ── */
 .stats-map-layout {
   display: grid;
-  grid-template-columns: 220px 1fr 280px;
+  grid-template-columns: 220px 1fr 300px;
   gap: 32px;
   align-items: start;
   margin-top: 40px;
@@ -835,12 +835,12 @@ body.header-collapsed {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .ph-map-wrap {
   position: relative;
   width: 100%;
-  min-height: 400px;
 }
 
 #ph-map {
@@ -848,7 +848,7 @@ body.header-collapsed {
   height: auto;
   display: block;
   overflow: visible;
-  min-height: 400px;
+  aspect-ratio: 700 / 980;
 }
 
 #ph-map path {
@@ -868,6 +868,7 @@ body.header-collapsed {
 }
 
 .ph-map-tooltip {
+  display: none;
   text-align: center;
   font-size: 12px;
   font-weight: 600;
@@ -886,7 +887,7 @@ body.header-collapsed {
   background: var(--white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 20px 18px;
+  padding: 16px 14px;
   box-shadow: var(--shadow-sm);
   max-height: 680px;
   overflow-y: auto;

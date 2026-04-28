@@ -338,24 +338,24 @@ function initPage() {
 
   if (phMap && tooltip && legendList) {
     const regionData = {
-      'NCR':  { name: 'NCR - National Capital Region',          href: 'contact.html' },
-      'I':    { name: 'Region I - Ilocos Region',               href: 'contact.html' },
-      'CAR':  { name: 'CAR - Cordillera Administrative Region', href: 'contact.html' },
-      'II':   { name: 'Region II - Cagayan Valley',             href: 'contact.html' },
-      'III':  { name: 'Region III - Central Luzon',             href: 'contact.html' },
-      'IVA':  { name: 'Region IV-A - CALABARZON',               href: 'contact.html' },
-      'IVB':  { name: 'Region IV-B - MIMAROPA',                 href: 'contact.html' },
-      'V':    { name: 'Region V - Bicol Region',                href: 'contact.html' },
-      'VI':   { name: 'Region VI - Western Visayas',            href: 'contact.html' },
-      'VII':  { name: 'Region VII - Central Visayas',           href: 'contact.html' },
-      'VIII': { name: 'Region VIII - Eastern Visayas',          href: 'contact.html' },
-      'IX':   { name: 'Region IX - Zamboanga Peninsula',        href: 'contact.html' },
-      'X':    { name: 'Region X - Northern Mindanao',           href: 'contact.html' },
-      'XI':   { name: 'Region XI - Davao Region',               href: 'contact.html' },
-      'XII':  { name: 'Region XII - SOCCSKSARGEN',              href: 'contact.html' },
-      'XIII': { name: 'Region XIII - CARAGA',                   href: 'contact.html' },
-      'ARMM': { name: 'BARMM - Bangsamoro',                     href: 'contact.html' },
-      'NIR':  { name: 'NIR - Negros Island Region',             href: 'contact.html' },
+      'NCR':  { name: 'NCR - National Capital Region',          count: 18,  href: 'contact.html' },
+      'I':    { name: 'Region I - Ilocos Region',               count: 27,  href: 'contact.html' },
+      'CAR':  { name: 'CAR - Cordillera Administrative Region', count: 53,  href: 'contact.html' },
+      'II':   { name: 'Region II - Cagayan Valley',             count: 32,  href: 'contact.html' },
+      'III':  { name: 'Region III - Central Luzon',             count: 11,  href: 'contact.html' },
+      'IVA':  { name: 'Region IV-A - CALABARZON',               count: 49,  href: 'contact.html' },
+      'IVB':  { name: 'Region IV-B - MIMAROPA',                 count: 16,  href: 'contact.html' },
+      'V':    { name: 'Region V - Bicol Region',                count: 90,  href: 'contact.html' },
+      'VI':   { name: 'Region VI - Western Visayas',            count: 54,  href: 'contact.html' },
+      'VII':  { name: 'Region VII - Central Visayas',           count: 41,  href: 'contact.html' },
+      'VIII': { name: 'Region VIII - Eastern Visayas',          count: 34,  href: 'contact.html' },
+      'IX':   { name: 'Region IX - Zamboanga Peninsula',        count: 91,  href: 'contact.html' },
+      'X':    { name: 'Region X - Northern Mindanao',           count: 166, href: 'contact.html' },
+      'XI':   { name: 'Region XI - Davao Region',               count: 5,   href: 'contact.html' },
+      'XII':  { name: 'Region XII - SOCCSKSARGEN',              count: 12,  href: 'contact.html' },
+      'XIII': { name: 'Region XIII - CARAGA',                   count: 24,  href: 'contact.html' },
+      'ARMM': { name: 'BARMM - Bangsamoro',                     count: 8,   href: 'contact.html' },
+      'NIR':  { name: 'NIR - Negros Island Region',             count: 0,   href: 'contact.html' },
     };
 
     function highlightLegend(regionId) {
@@ -372,16 +372,34 @@ function initPage() {
       tooltip.textContent = 'Hover a region on the map';
     }
 
+    /* floating badge that follows the mouse */
+    const badge = document.createElement('div');
+    badge.id = 'map-hover-badge';
+    badge.style.cssText = 'position:fixed;display:none;background:#003087;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;pointer-events:none;z-index:999;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+    document.body.appendChild(badge);
+
+    function showBadge(e, text) {
+      badge.textContent = text;
+      badge.style.display = 'block';
+      moveBadge(e);
+    }
+    function moveBadge(e) {
+      badge.style.left = (e.clientX + 14) + 'px';
+      badge.style.top  = (e.clientY - 28) + 'px';
+    }
+    function hideBadge() { badge.style.display = 'none'; }
+
     phMap.querySelectorAll('path[id]').forEach(path => {
       const id = path.id;
       const data = regionData[id];
-      if (data) path.setAttribute('title', data.name);
 
-      path.addEventListener('mouseenter', () => {
-        tooltip.textContent = (data ? data.name : id) + ' — click to view';
+      path.addEventListener('mouseenter', (e) => {
+        const label = data ? data.name + (data.count ? '  •  ' + data.count + ' ST' : '') : id;
+        showBadge(e, label);
         highlightLegend(id);
       });
-      path.addEventListener('mouseleave', clearHighlight);
+      path.addEventListener('mousemove', moveBadge);
+      path.addEventListener('mouseleave', () => { hideBadge(); clearHighlight(); });
       path.addEventListener('click', () => {
         if (data && data.href) window.location.href = data.href;
       });
@@ -392,11 +410,12 @@ function initPage() {
         const id = li.dataset.region;
         const path = phMap.querySelector('#' + CSS.escape(id));
         if (path) path.classList.add('map-active');
-        const data = regionData[id];
-        tooltip.textContent = (data ? data.name : id) + ' — click to view';
         li.classList.add('active');
       });
-      li.addEventListener('mouseleave', clearHighlight);
+      li.addEventListener('mouseleave', () => {
+        phMap.querySelectorAll('path.map-active').forEach(p => p.classList.remove('map-active'));
+        li.classList.remove('active');
+      });
       li.addEventListener('click', () => {
         const href = li.dataset.href;
         if (href) window.location.href = href;
