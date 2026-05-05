@@ -319,6 +319,7 @@ function initPage() {
 
   initTabs('.resources-tabs-section', '.resource-tab-btn', '.resource-tab-content');
   initTabs('.regional-stu-section',   '.tab-btn',          '.tab-content');
+  initTabs('.org-chart-section',      '.tab-btn',          '.tab-content');
 
   /* ── SCROLL REVEAL ── */
   const revealEls = document.querySelectorAll('.reveal');
