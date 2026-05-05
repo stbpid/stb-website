@@ -1255,24 +1255,90 @@ body.header-collapsed {
 .impact-intro { max-width: 700px; color: var(--text-light); margin-bottom: 40px; font-size: 14px; }
 
 .impact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 600px;
+  display: flex;
+  gap: 0;
+  max-width: 100%;
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.impact-card {
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+  cursor: pointer;
+  flex: 1;
+  transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.impact-card:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.impact-card:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+.impact-card:hover {
+  flex: 2.2;
+}
+
+.impact-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.impact-card:hover img {
+  transform: scale(1.05);
+}
+
+.impact-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 40, 90, 0.78);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 28px;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+
+.impact-card:hover .impact-overlay {
+  opacity: 1;
+}
+
+.impact-overlay h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.impact-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 
-.impact-item i {
-  font-size: 48px;
-  color: var(--primary-blue);
-  margin-bottom: 12px;
+.impact-overlay ul li {
+  color: rgba(255,255,255,0.88);
+  font-size: 14px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  white-space: nowrap;
 }
 
-.impact-item p {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-dark);
+.impact-overlay ul li:last-child {
+  border-bottom: none;
 }
 
 /* ============================================
@@ -1662,7 +1728,7 @@ body.header-collapsed {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: start;
 }
 
 .stb-logo-mark {
@@ -2573,7 +2639,7 @@ body.header-collapsed {
   .flagship-card-overlay { padding: 20px 16px 16px; }
   .flagship-card-overlay h3 { font-size: 15px; }
   .flagship-card-overlay p { font-size: 13px; }
-  .impact-grid { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
+  .impact-grid { flex-direction: row; }
   .video-wrapper { grid-template-columns: 1fr; gap: 28px; }
   .innovator-layout { grid-template-columns: 1fr; }
   .stb-intro-grid { grid-template-columns: 1fr; }
@@ -2623,7 +2689,11 @@ body.header-collapsed {
   .gad-banner-visual { flex: none; width: 100%; height: 180px; }
   .gad-banner .section-divider { margin: 10px 0 20px; }
   .stories-grid { grid-template-columns: 1fr; }
-  .impact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .impact-grid { flex-direction: column; gap: 0; }
+  .impact-card { height: 120px; flex: none; transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0; }
+  .impact-card:hover { flex: none; height: 320px; }
+  .impact-card:first-child { border-radius: 16px 16px 0 0; }
+  .impact-card:last-child { border-radius: 0 0 16px 16px; }
   .stat-number { font-size: 38px; }
   .about-card-body h3 { font-size: 15px; }
 }
