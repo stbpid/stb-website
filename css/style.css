@@ -1825,6 +1825,9 @@ body.header-collapsed {
 .quality-policy-section {
   background: linear-gradient(to right, var(--primary-blue) 55%, var(--white) 55%);
 }
+.quality-policy-right {
+  padding: 80px 60px;
+}
 
 .quality-policy-grid {
   display: grid;
@@ -2727,6 +2730,51 @@ body.header-collapsed {
   .cta-banner-right { align-items: center; }
   .director-grid { grid-template-columns: 1fr; }
   .director-photo { width: 100%; height: 200px; }
+}
+
+/* ============================================
+   ABOUT PAGE — tablet (≤ 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .stb-intro-grid { gap: 36px; }
+  .quality-policy-section { background: none !important; }
+  .quality-policy-grid { grid-template-columns: 1fr; }
+  .quality-box { border-radius: var(--radius-md) !important; }
+  .quality-policy-right { padding: 40px 32px; }
+  .org-card { min-width: 0; flex: 1 1 200px; }
+}
+
+/* ============================================
+   ABOUT PAGE — mobile (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  .stb-intro-grid > div:last-child { padding-top: 0 !important; }
+  .quality-policy-right { padding: 32px 20px; }
+  .org-row { flex-direction: column; }
+  .org-card { width: 100%; }
+  .tabs-nav { flex-wrap: wrap; gap: 4px; }
+  .tab-btn { flex: 1 1 auto; text-align: center; font-size: 11px; padding: 10px 10px; }
+  .stb-visuals-two-col { grid-template-columns: 1fr !important; gap: 24px; }
+}
+
+/* ============================================
+   CONTACT PAGE — tablet (≤ 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .contact-info-card--detailed .contact-card-header h4 { font-size: 15px; }
+}
+
+/* ============================================
+   CONTACT + ABOUT — mobile (≤ 600px)
+   ============================================ */
+.visit-office-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 600px) {
+  .visit-office-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-info-card--detailed iframe { height: 240px !important; }
 }
 
 /* ============================================
