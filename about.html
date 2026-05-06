@@ -108,7 +108,7 @@
 
         <div class="commitment-item">
           <div class="commitment-icon">
-            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+1" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+            <img src="images/resp-dev-icon.webp" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
           </div>
           <div>
             <h4>Responsive Development</h4>
@@ -118,7 +118,7 @@
 
         <div class="commitment-item">
           <div class="commitment-icon">
-            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+2" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+            <img src="images/pro-tech-icon.webp" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
           </div>
           <div>
             <h4>Proactive Technology</h4>
@@ -128,7 +128,7 @@
 
         <div class="commitment-item">
           <div class="commitment-icon">
-            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+3" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+            <img src="images/cap-build-icon.webp" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
           </div>
           <div>
             <h4>Capacity Building</h4>
@@ -138,7 +138,7 @@
 
         <div class="commitment-item">
           <div class="commitment-icon">
-            <img src="https://placehold.co/64x64/e8eeff/003087?text=Icon+4" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
+            <img src="images/acc-diss-icon.webp" alt="Commitment Icon" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
           </div>
           <div>
             <h4>Accelerated Dissemination</h4>
@@ -160,11 +160,11 @@
         <div class="quality-box" style="border-radius:0;">
           <div class="quality-box-header">
             <div class="quality-logo">
-              <img src="images/dswd-logo.webp" alt="DSWD Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />
+              <img src="images/dswd-logo-white.webp" alt="DSWD Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />
             </div>
             <div>
               <div style="font-size:12px;letter-spacing:2px;opacity:0.8;margin-bottom:4px;font-weight:600;">WE ARE COMMITTED TO</div>
-              <h2 style="font-size:20px;font-weight:800;line-height:1.2;">QUALITY POLICY</h2>
+              <h2 style="font-size:20px;font-weight:700;line-height:1.2;">QUALITY POLICY</h2>
             </div>
           </div>
 
@@ -230,12 +230,22 @@
       </div>
 
       <!-- Org Chart Tabs -->
-      <div class="tabs-nav" style="margin-bottom:32px;">
+      <div class="tabs-nav org-tabs-nav" style="margin-bottom:32px;">
         <button class="tab-btn active" data-tab="stb-div">Social Technology Bureau</button>
         <button class="tab-btn" data-tab="dfp-div">Design Formulation Division</button>
         <button class="tab-btn" data-tab="pi-div">Pilot Implementation Division</button>
         <button class="tab-btn" data-tab="stae-div">Social Technology Analysis and Evaluation Division</button>
         <button class="tab-btn" data-tab="admin-div">Admin Support</button>
+      </div>
+      <!-- Org Chart Dropdown (mobile only) -->
+      <div class="org-tabs-dropdown" style="margin-bottom:28px;display:none;">
+        <select id="org-tab-select" style="width:100%;padding:10px 14px;border:1px solid var(--border-light);border-radius:var(--radius-md);font-size:14px;color:var(--text-dark);background:var(--white);cursor:pointer;appearance:auto;">
+          <option value="stb-div">Social Technology Bureau</option>
+          <option value="dfp-div">Design Formulation Division</option>
+          <option value="pi-div">Pilot Implementation Division</option>
+          <option value="stae-div">Social Technology Analysis and Evaluation Division</option>
+          <option value="admin-div">Admin Support</option>
+        </select>
       </div>
 
       <!-- STB TAB -->
@@ -470,5 +480,17 @@
   <div id="site-footer-mount"></div>
 
   <script src="js/script.js"></script>
+  <script>
+    (function() {
+      var sel = document.getElementById('org-tab-select');
+      if (!sel) return;
+      sel.addEventListener('change', function() {
+        var val = this.value;
+        document.querySelectorAll('.tab-btn[data-tab]').forEach(function(btn) {
+          if (btn.getAttribute('data-tab') === val) btn.click();
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

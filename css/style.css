@@ -1806,8 +1806,8 @@ body.header-collapsed {
 .commitment-icon {
   width: 64px; height: 64px;
   border-radius: 50%;
-  background: #e8eeff;
-  border: 2px dashed #99aadd;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1856,9 +1856,9 @@ body.header-collapsed {
 
 .quality-logo {
   width: 80px; height: 80px;
-  background: rgba(255,255,255,0.15);
-  border-radius: var(--radius-md);
-  border: 2px dashed rgba(255,255,255,0.4);
+  background: transparent;
+  border-radius: 0;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1912,6 +1912,7 @@ body.header-collapsed {
 
 /* Org Chart */
 .org-chart-section { background: var(--bg-light); }
+.org-tabs-dropdown { display: none; }
 
 .org-chart {
   margin-top: 32px;
@@ -1940,6 +1941,12 @@ body.header-collapsed {
   overflow: hidden;
   width: 220px;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.org-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
 }
 
 .org-card-photo {
@@ -1947,6 +1954,20 @@ body.header-collapsed {
   height: 180px;
   background: #dde8f5;
   overflow: hidden;
+  position: relative;
+}
+
+.org-card-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.35s ease;
+  pointer-events: none;
+}
+
+.org-card:hover .org-card-photo::after {
+  background: rgba(0,0,0,0.28);
 }
 
 .org-card-photo img {
@@ -1954,6 +1975,11 @@ body.header-collapsed {
   height: 100%;
   object-fit: cover;
   object-position: top;
+  transition: transform 0.35s ease;
+}
+
+.org-card:hover .org-card-photo img {
+  transform: scale(1.08);
 }
 
 .org-card-body {
@@ -2105,6 +2131,9 @@ body.header-collapsed {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+.contact-info-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
 .contact-info-card {
   display: flex;
   flex-direction: column;
@@ -2239,6 +2268,7 @@ body.header-collapsed {
 /* Contact page — tablet */
 @media (max-width: 900px) {
   .contact-info-grid { grid-template-columns: 1fr 1fr; }
+  .contact-info-grid--2col { grid-template-columns: 1fr 1fr; }
   .map-banner-wrapper { height: 300px; }
   .tabs-nav { flex-wrap: nowrap; overflow-x: auto; }
   .tab-btn { padding: 10px 18px; }
@@ -2247,6 +2277,7 @@ body.header-collapsed {
 /* Contact page — mobile */
 @media (max-width: 600px) {
   .contact-info-grid { grid-template-columns: 1fr; }
+  .contact-info-grid--2col { grid-template-columns: 1fr; }
   .map-banner-wrapper { height: 240px; }
   .contact-info-card { padding: 20px 18px; }
   .tab-btn { font-size: 12px; padding: 10px 14px; }
@@ -2334,6 +2365,10 @@ body.header-collapsed {
 }
 
 .data-table tr:hover td { background: #f0f4ff; }
+
+.regional-stu-section .data-table td:nth-child(2) { text-transform: capitalize; }
+.regional-stu-section .data-table td:nth-child(4) a { color: var(--primary-blue); text-decoration: none; }
+.regional-stu-section .data-table td:nth-child(4) a:hover { text-decoration: underline; }
 
 .action-icons {
   display: flex;
@@ -2741,7 +2776,8 @@ body.header-collapsed {
   .quality-policy-grid { grid-template-columns: 1fr; }
   .quality-box { border-radius: var(--radius-md) !important; }
   .quality-policy-right { padding: 40px 32px; }
-  .org-card { min-width: 0; flex: 1 1 200px; }
+  .org-row { flex-wrap: wrap; justify-content: center; }
+  .org-card { min-width: 0; flex: 1 1 180px; max-width: 220px; }
 }
 
 /* ============================================
@@ -2750,10 +2786,14 @@ body.header-collapsed {
 @media (max-width: 768px) {
   .stb-intro-grid > div:last-child { padding-top: 0 !important; }
   .quality-policy-right { padding: 32px 20px; }
-  .org-row { flex-direction: column; }
-  .org-card { width: 100%; }
-  .tabs-nav { flex-wrap: wrap; gap: 4px; }
-  .tab-btn { flex: 1 1 auto; text-align: center; font-size: 11px; padding: 10px 10px; }
+  .org-row { flex-direction: column; align-items: stretch; }
+  .org-card { width: 100%; display: flex; flex-direction: row; }
+  .org-card-photo { width: 100px; height: auto; min-height: 110px; flex-shrink: 0; }
+  .org-card-body { flex: 1; display: flex; flex-direction: column; justify-content: center; border-top: none; border-left: 3px solid var(--primary-blue); }
+  .org-card-name { font-size: 13px; }
+  .org-card-title { font-size: 11px; }
+  .org-tabs-nav { display: none; }
+  .org-tabs-dropdown { display: block; }
   .stb-visuals-two-col { grid-template-columns: 1fr !important; gap: 24px; }
 }
 
