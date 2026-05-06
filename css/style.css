@@ -1382,6 +1382,8 @@ body.header-collapsed {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  z-index: 2;
   animation: play-pulse 1.5s ease-out infinite;
 }
 @keyframes play-pulse {

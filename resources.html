@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,15 +14,42 @@
     .file-name-link:hover { color: var(--primary-blue); text-decoration: underline; }
     .empty-state { padding: 48px 0; text-align: center; color: var(--text-light); font-size: 14px; }
     .empty-state i { font-size: 40px; margin-bottom: 12px; display: block; }
+    .table-pagination { display: flex; align-items: center; justify-content: flex-end; gap: 4px; padding: 12px 0 4px; flex-wrap: wrap; }
+    .table-pagination button { min-width: 36px; height: 36px; padding: 0 10px; border: 1px solid #d1d5db; background: #fff; color: #374151; font-size: 14px; border-radius: 6px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .table-pagination button:hover:not(:disabled) { background: #f3f4f6; border-color: #9ca3af; }
+    .table-pagination button.active { background: var(--primary-blue, #1d4ed8); color: #fff; border-color: var(--primary-blue, #1d4ed8); font-weight: 600; }
+    .table-pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .category-chip { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .chip-manual { background: #dbeafe; color: #1e40af; }
+    .chip-guidelines { background: #d1fae5; color: #065f46; }
+    .chip-briefer { background: #fef3c7; color: #92400e; }
+    .chip-storybook { background: #ede9fe; color: #5b21b6; }
+    .chip-primer { background: #fce7f3; color: #9d174d; }
+    .chip-law { background: #e0f2fe; color: #0369a1; }
+    .chip-form { background: #f0fdf4; color: #166534; }
+    .chip-presentation { background: #fff7ed; color: #9a3412; }
+    .chip-video { background: #fdf2f8; color: #86198f; }
+
+    .resources-search-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; }
+    .resources-search-bar input[type="text"] {
+      flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid #d1d5db;
+      border-radius: 8px; font-size: 14px; color: #374151; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .resources-search-bar input[type="text"]:focus { border-color: var(--primary-blue, #1d4ed8); box-shadow: 0 0 0 3px rgba(29,78,216,0.1); }
+    .resources-search-bar select {
+      padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px;
+      font-size: 14px; color: #374151; background: #fff; cursor: pointer; outline: none;
+      transition: border-color 0.2s;
+    }
+    .resources-search-bar select:focus { border-color: var(--primary-blue, #1d4ed8); }
+    .resources-table-info { font-size: 13px; color: #6b7280; margin-bottom: 8px; }
   </style>
 </head>
 <body>
 
   <div id="site-header-mount"></div>
 
-  <!-- ============================================================
-       PAGE TITLE
-  ============================================================ -->
   <section class="resources-header-section">
     <div class="container">
       <div class="reveal" style="padding-bottom:32px;">
@@ -34,312 +61,47 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       TABS + RESOURCE TABLE
-  ============================================================ -->
   <section class="resources-tabs-section">
     <div class="container">
       <div class="reveal">
-        <div class="resources-tabs-nav" role="tablist" aria-label="Resource Categories">
-          <button class="resource-tab-btn active" data-tab="laws" role="tab" aria-selected="true">Laws and Issuance</button>
-          <button class="resource-tab-btn" data-tab="publications" role="tab" aria-selected="false">Publications</button>
-          <button class="resource-tab-btn" data-tab="forms" role="tab" aria-selected="false">Forms</button>
-          <button class="resource-tab-btn" data-tab="templates" role="tab" aria-selected="false">Templates</button>
-          <button class="resource-tab-btn" data-tab="presentation" role="tab" aria-selected="false">Presentation</button>
-          <button class="resource-tab-btn" data-tab="videos" role="tab" aria-selected="false">Orientation Videos</button>
+
+        <div class="resources-search-bar">
+          <input type="text" id="res-search" placeholder="Search by file name…" autocomplete="off" />
+          <select id="res-category-filter">
+            <option value="">All Categories</option>
+            <option value="Law">Law</option>
+            <option value="Manual">Manual</option>
+            <option value="Guidelines">Guidelines</option>
+            <option value="Briefer">Briefer</option>
+            <option value="Storybook">Storybook</option>
+            <option value="Primer">Primer</option>
+            <option value="Form">Form</option>
+            <option value="Presentation">Presentation</option>
+            <option value="Video">Video</option>
+          </select>
         </div>
 
-        <!-- LAWS AND ISSUANCE -->
-        <div class="resource-tab-content active" data-content="laws" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">AO No. 06 S. 2016 – Enhanced Guidelines on Social Technology Development</a></td>
-                  <td>13 March 2021</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file" aria-label="View AO No. 06 S. 2016"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file" aria-label="Download AO No. 06 S. 2016"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">AO No. 14 S. 2018 – Omnibus Guidelines on Social Technology Development</a></td>
-                  <td>26 June 2022</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">AO No. 34 S. 2003 – Framework for Social Technology Development</a></td>
-                  <td>20 May 2024</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">MC 06 S. 2011 – Guidelines on the Development of Social Technology Projects</a></td>
-                  <td>11 March 2025</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">MC No. 2 S. 2020 – Guidelines in Pilot-Testing of the Paghilom Program</a></td>
-                  <td>27 February 2019</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">MC No. 33 S. 2020 – Guidelines for the Implementation of Yakap Bayan</a></td>
-                  <td>31 January 2021</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="resources-table-info" id="res-table-info"></div>
+
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="res-main-table">
+            <thead>
+              <tr>
+                <th style="width:55%;">File Name</th>
+                <th style="width:20%;">Category</th>
+                <th style="width:25%;text-align:center;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="res-tbody"></tbody>
+          </table>
         </div>
 
-        <!-- PUBLICATIONS -->
-        <div class="resource-tab-content" data-content="publications" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">STB Annual Report 2023</a></td>
-                  <td>15 February 2024</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Social Technology Compendium Vol. 1</a></td>
-                  <td>01 June 2023</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">The Innovator Newsletter Issue 1</a></td>
-                  <td>19 March 2026</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="empty-state" id="res-empty" style="display:none;">
+          <i class="fas fa-folder-open"></i>
+          No files match your search.
         </div>
 
-        <!-- FORMS -->
-        <div class="resource-tab-content" data-content="forms" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">MOA Template for LGU Partners</a></td>
-                  <td>05 January 2024</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Expression of Interest Form – Social Technology Replication</a></td>
-                  <td>12 March 2023</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Monitoring and Evaluation Form v2</a></td>
-                  <td>30 August 2023</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- TEMPLATES -->
-        <div class="resource-tab-content" data-content="templates" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">Social Technology Development Plan Template</a></td>
-                  <td>22 April 2022</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Training Design Template for STB Programs</a></td>
-                  <td>07 September 2023</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- PRESENTATION -->
-        <div class="resource-tab-content" data-content="presentation" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">SocTech Fair 2026 – Opening Ceremony Presentation</a></td>
-                  <td>23 April 2026</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Flagship Social Technologies Overview Deck</a></td>
-                  <td>10 January 2025</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View file"><i class="fas fa-eye"></i></button>
-                      <button class="action-icon-btn download" title="Download file"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- ORIENTATION VIDEOS -->
-        <div class="resource-tab-content" data-content="videos" role="tabpanel">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:55%;">File Name</th>
-                  <th style="width:25%;">Published Date</th>
-                  <th style="width:20%;text-align:center;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#" class="file-name-link">Social Technology Development Process – Orientation Video</a></td>
-                  <td>01 March 2024</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
-                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">ProtectTEEN Program Implementation Guide Video</a></td>
-                  <td>14 August 2023</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
-                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="file-name-link">Yakap Bayan – LGU Orientation Video</a></td>
-                  <td>25 November 2022</td>
-                  <td>
-                    <div class="action-icons" style="justify-content:center;">
-                      <button class="action-icon-btn view" title="View video"><i class="fas fa-play-circle"></i></button>
-                      <button class="action-icon-btn download" title="Download video"><i class="fas fa-download"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <div class="table-pagination" id="res-pagination"></div>
 
       </div>
     </div>
@@ -348,5 +110,174 @@
   <div id="site-footer-mount"></div>
 
   <script src="js/script.js"></script>
+  <script>
+  (function () {
+    const ROWS_PER_PAGE = 10;
+
+    const ALL_RESOURCES = [
+      { name: 'AO No. 06 S. 2016 - Enhanced Guidelines on Social Technology Development', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/AO-No.-06-series-of-2016-Enhanced-Guidelines-STB.pdf', icon: 'fa-eye' },
+      { name: 'AO No. 14 S. 2018 - Omnibus Guidelines on Social Technology Development', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/AO-No.-14-series-of-2018.pdf', icon: 'fa-eye' },
+      { name: 'AO No. 34 S. 2003 - Framework for Social Technology Development', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/AO-No.-34-series-of-2003-Framework-.-..pdf', icon: 'fa-eye' },
+      { name: 'MC 06 S. 2011 - Guidelines on the Development of Social Technology Projects Series of 2010', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/MC-06-STB.pdf', icon: 'fa-eye' },
+      { name: 'MC No. 2 S. 2020 - Guidelines in Pilot-Testing of the Paghilom Program', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/MC-No.-2-Guidelines-Paghilom.pdf', icon: 'fa-eye' },
+      { name: 'MC. No. 33 S. 2020 - Guidelines for the Implementation of Yakap Bayan Program', category: 'Law', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/MC.-N0-33-Guidelines-for-Inplmentation-of-YB-Program.pdf', icon: 'fa-eye' },
+      { name: 'Buklod Paglaom Para sa CICL Manual', category: 'Manual', url: 'https://bit.ly/3z6y05O', icon: 'fa-eye' },
+      { name: 'CDS Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1w5mnswne9cnJ9lx6Y0iCwG5r1yl5hctp/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CSRPDV Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1OZl0Mbu7zk64HNYmeFhwB7PqkvSF6wcq/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Helping Strategies for CRCF Enhanced Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1KZToapwKv_BgR5XvsMwOp0tPYLay9KPB/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Homecare Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1SrF3N0rTwCvTMcLVSPgCVzpLRaenlaN6/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Music and Arts Therapy Program for PWDs specifically with Autism', category: 'Manual', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/Music-and-Arts-Therapy-Programs-for-Persons-with-Disability-specfically-with-Autism-Spectrum-Disorder-1.pdf-FBA-October-2020.pdf', icon: 'fa-eye' },
+      { name: 'SaLInLAHI Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1yNycwMPhNLaVq1-NoGjsEcIlKWM1RCOQ/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Yakap Bayan AC Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1r0-ig6y_JpoEOZ0jcnN6PxoTaU7JTfDw/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Yakap Bayan Workbook', category: 'Manual', url: 'https://drive.google.com/file/d/1ovC3UK1wHaVJWbiuqP8t8buJJtsr5XGG/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Yakap Bayan Training of Trainers Manual', category: 'Manual', url: 'https://drive.google.com/file/d/1dwbfMHmWl89q5MuGB2rcryRILjJfnfyM/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CaRe-ABLE Project Guidelines', category: 'Guidelines', url: 'https://drive.google.com/file/d/1M51TdaFk5CHN90Fil7d3AL2iA4mSdVBO/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Music and Art Therapy Program for PWD especially those with Autism Spectrum Disorders (ASD) Guidelines', category: 'Guidelines', url: 'https://drive.google.com/file/d/1G3nvh5XcSgSaXlRiWNBVOkEmxEGD3Y6p/view', icon: 'fa-eye' },
+      { name: 'SHIELD [Si ELENA at ang Kanyang mga Pangarap]', category: 'Storybook', url: 'https://drive.google.com/file/d/1G3nvh5XcSgSaXlRiWNBVOkEmxEGD3Y6p/view', icon: 'fa-eye' },
+      { name: 'SHIELD Primer', category: 'Primer', url: 'https://drive.google.com/file/d/1wxHSjWt9qU9qswS4dX41xPToNmTQaZjx/view', icon: 'fa-eye' },
+      { name: 'COMPRE', category: 'Briefer', url: 'https://drive.google.com/file/d/1mGl_vJuBa4NBH7TwrDHTUq0lTvhtUuyk/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Buklod Paglaom para sa CICL', category: 'Briefer', url: 'https://drive.google.com/file/d/1izfWTas0Zis-mBQW0-0ZrfaMecEjkvcA/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CARe-ABLE', category: 'Briefer', url: 'https://drive.google.com/file/d/1uVS1xFzK9tqG-E40wcupipMklc9G0dvw/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CIAGV', category: 'Briefer', url: 'https://drive.google.com/file/d/1gpE4CeDKeMrhuL6qBIa29aFq0acHBP-K/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CSRPDV', category: 'Briefer', url: 'https://drive.google.com/file/d/1sUHd-lyehUAK70S4h6JlMHRB5eRQVdhc/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CTCVAFE', category: 'Briefer', url: 'https://drive.google.com/file/d/14H2mW8-HrSFX-pOxuxwSgljzX0oPm_rk/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'FDAPP', category: 'Briefer', url: 'https://drive.google.com/file/d/1Jvr7JCLj3nJSUX71sgF68dlo1mSt-CBd/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'GRCM', category: 'Briefer', url: 'https://drive.google.com/file/d/10dE_GecpjrTI-iQhwRwAFDmn96NgPNCN/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Home Care', category: 'Briefer', url: 'https://drive.google.com/file/d/1LBJhK6vHmsjCfOrsoRzOYBezrwJfw0Jr/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Intergen', category: 'Briefer', url: 'https://drive.google.com/file/d/1Vhgk87haQIsty9n4ao_PeTRAYvmA3Qzk/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'JNS', category: 'Briefer', url: 'https://drive.google.com/file/d/1lrjV7DZ98LUekmDcH7T-yg_C575D-8JM/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'ReSPPEC', category: 'Briefer', url: 'https://drive.google.com/file/d/1qRBUZtiPdfZEw40yfFU0kVUvXwobtBAT/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'SaLInLAHI', category: 'Briefer', url: 'https://drive.google.com/file/d/1GU2FfzzYryXSotAvwQGduDinXkFBaAkE/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Sheltered Workshop', category: 'Briefer', url: 'https://drive.google.com/file/d/1H9te-VgP-52a7vYUAUuw3A66IsG6A1Bp/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'SHIELD', category: 'Briefer', url: 'https://drive.google.com/file/d/1VaNkxAzPEbiAAxDxAY4HWXBTacatA0oZ/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'SDEC', category: 'Briefer', url: 'https://drive.google.com/file/d/1PAZSS7tdTk5CMevwNnBKXiXv5wOS-rmW/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'START', category: 'Briefer', url: 'https://drive.google.com/file/d/1i5XNth8se1QRhcWwZEsoej9ir2b7rZDH/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'TeamBRE', category: 'Briefer', url: 'https://drive.google.com/file/d/1_ksi8OPMU97Cv0d_ZTP8w_NPNPE7a9_s/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'WFS', category: 'Briefer', url: 'https://drive.google.com/file/d/1LJTrBzR-QaUbuUbFO3MOKV11XhtFF9bw/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'Pro-forma - MOA Template for Multiple STs', category: 'Form', url: 'https://docs.google.com/document/d/1LttBwCd-eMW-cLtkdbEfo_kgffLMPTmW/edit?usp=sharing&ouid=106087644683244978922&rtpof=true&sd=true', icon: 'fa-eye' },
+      { name: 'Pro-forma - Compre MOA 2022', category: 'Form', url: 'https://docs.google.com/document/d/1eBu2BNSD2kca2eCS2nOI1N9u3bI9-AojRQWWfdalI1c/edit?usp=sharing', icon: 'fa-eye' },
+      { name: 'Pro-forma - SB Resolution (Sample: Buklod)', category: 'Form', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/Pro-forma-SB-Resolution-Buklod-converted.pdf', icon: 'fa-eye' },
+      { name: 'Pro-forma - Yakap Bayan Program (YBP) SB Resolution for Replication', category: 'Form', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/YBP-SB-RESOLUTION-FOR-REPLICATION-OCT-14-converted.pdf', icon: 'fa-eye' },
+      { name: 'Pro-forma - Consent Form for Photos and Videos', category: 'Form', url: 'https://docs.google.com/document/d/1PYKyG62hUvObrQVZD99Y35gnDOUd0vAR/edit?usp=sharing&ouid=106087644683244978922&rtpof=true&sd=true', icon: 'fa-eye' },
+      { name: 'Pro-forma - Expression of Interest (EOI)', category: 'Form', url: 'https://stb.dswd.gov.ph/wp-content/uploads/2020/12/Expression-of-Interest-converted.pdf', icon: 'fa-eye' },
+      { name: 'STB Framework and Development Process PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1ldFHAcy_dXCX9MiMIB2SAP8BxaP5yZze/view', icon: 'fa-eye' },
+      { name: 'Aruga at Kalinga PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/18EUNQe_lGOYF6nPR4NGDCDbTTYQYfp9Z/view', icon: 'fa-eye' },
+      { name: 'Buklod Paglaom PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1ZfiEReyjL3FQUXeHVPE7huvwhwnLDK62/view', icon: 'fa-eye' },
+      { name: 'Buklod Paglaom (Orientation Video Slides)', category: 'Presentation', url: 'https://drive.google.com/file/d/13eih24ljKQxViajOHWyiuVD4bbZ4uThC/view?usp=sharing', icon: 'fa-eye' },
+      { name: 'CARe-ABLE PPT', category: 'Presentation', url: 'https://drive.google.com/file/d/1SwwJn-s-3epsN1BQ3-32lZRcay8RBLCa/view', icon: 'fa-eye' },
+      { name: 'COMPRE_ TASK FORCE', category: 'Presentation', url: 'https://drive.google.com/file/d/1vo1ihdaFo7YmCXWfslUWR0f-BhQfBtAl/view', icon: 'fa-eye' },
+      { name: 'FDAPP PPT', category: 'Presentation', url: 'https://drive.google.com/file/d/1EVnLnaSCvKmmDv3EoLaGHCvu_Psou4Cd/view', icon: 'fa-eye' },
+      { name: 'GRCM PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1twD3lRecf0DlQVl4Z0Tk7Z5tY0ACh3mS/view', icon: 'fa-eye' },
+      { name: 'HCSSSC (HomeCare)', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1Mr51bKjaV9byq4X6i2lHF5u-Nz3V52gI/view', icon: 'fa-eye' },
+      { name: 'ReSPECC PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1tGG9oVBeo7Y91j3_8guB4OpjvJYy5Gu-/view', icon: 'fa-eye' },
+      { name: 'SaLInLAHI PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1JeUqR1Z0DdjZi_poCJhaVaFbI33-NNIN/view', icon: 'fa-eye' },
+      { name: 'SDEC PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1XtzkXRRhZ9okytiJCfd6SAqoRaMrp0EP/view', icon: 'fa-eye' },
+      { name: 'SHIELD PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1Qz0xIVaRgSB0GQRjCjhGP-KXpNqP3hY9/view', icon: 'fa-eye' },
+      { name: 'TeamBRE PPT', category: 'Presentation', url: 'https://drive.google.com/file/d/1yK9vHIyZL9mcBqaxOE1dXrZqtLK4Tzqe/view', icon: 'fa-eye' },
+      { name: 'WFS PPT', category: 'Presentation', url: 'https://docs.google.com/presentation/d/1E47HgsfHS80fuU6v2EbNXrNYaeqF9hDl/view', icon: 'fa-eye' },
+      { name: 'WFS', category: 'Video', url: 'https://stb.dswd.gov.ph/wfs/', icon: 'fa-play-circle' },
+      { name: 'GRCM', category: 'Video', url: 'https://stb.dswd.gov.ph/grcm/', icon: 'fa-play-circle' },
+      { name: 'CIAGV', category: 'Video', url: 'https://stb.dswd.gov.ph/ciagv/', icon: 'fa-play-circle' },
+      { name: 'SHIELD', category: 'Video', url: 'https://stb.dswd.gov.ph/shield/', icon: 'fa-play-circle' },
+    ];
+
+    const CHIP_CLASS = {
+      'Law': 'chip-law', 'Manual': 'chip-manual', 'Guidelines': 'chip-guidelines',
+      'Briefer': 'chip-briefer', 'Storybook': 'chip-storybook', 'Primer': 'chip-primer',
+      'Form': 'chip-form', 'Presentation': 'chip-presentation', 'Video': 'chip-video'
+    };
+
+    let currentPage = 1;
+    let filtered = ALL_RESOURCES.slice();
+
+    const tbody = document.getElementById('res-tbody');
+    const pagination = document.getElementById('res-pagination');
+    const tableInfo = document.getElementById('res-table-info');
+    const emptyState = document.getElementById('res-empty');
+    const searchInput = document.getElementById('res-search');
+    const categoryFilter = document.getElementById('res-category-filter');
+
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      const cat = categoryFilter.value;
+      filtered = ALL_RESOURCES.filter(r => {
+        const matchName = !q || r.name.toLowerCase().includes(q);
+        const matchCat = !cat || r.category === cat;
+        return matchName && matchCat;
+      });
+      currentPage = 1;
+      render();
+    }
+
+    function render() {
+      tbody.innerHTML = '';
+      const total = filtered.length;
+      const totalPages = Math.max(1, Math.ceil(total / ROWS_PER_PAGE));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * ROWS_PER_PAGE;
+      const pageRows = filtered.slice(start, start + ROWS_PER_PAGE);
+
+      if (total === 0) {
+        emptyState.style.display = '';
+        document.getElementById('res-main-table').style.display = 'none';
+        tableInfo.textContent = '';
+        pagination.innerHTML = '';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      document.getElementById('res-main-table').style.display = '';
+
+      const endRow = Math.min(start + ROWS_PER_PAGE, total);
+      tableInfo.textContent = 'Showing ' + (start + 1) + '–' + endRow + ' of ' + total + ' file' + (total !== 1 ? 's' : '');
+
+      pageRows.forEach(r => {
+        const tr = document.createElement('tr');
+        const chipClass = CHIP_CLASS[r.category] || 'chip-briefer';
+        tr.innerHTML =
+          '<td><a href="' + r.url + '" target="_blank" class="file-name-link">' + r.name + '</a></td>' +
+          '<td><span class="category-chip ' + chipClass + '">' + r.category + '</span></td>' +
+          '<td><div class="action-icons" style="justify-content:center;">' +
+          '<a href="' + r.url + '" target="_blank"><button class="action-icon-btn view" title="View file"><i class="fas ' + r.icon + '"></i></button></a>' +
+          '</div></td>';
+        tbody.appendChild(tr);
+      });
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      pagination.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      function btn(label, page, disabled, active) {
+        const b = document.createElement('button');
+        b.innerHTML = label;
+        if (disabled) b.disabled = true;
+        if (active) b.classList.add('active');
+        if (!disabled) b.addEventListener('click', () => { currentPage = page; render(); });
+        return b;
+      }
+
+      pagination.appendChild(btn('&laquo;', currentPage - 1, currentPage === 1, false));
+
+      let start = Math.max(1, currentPage - 2);
+      let end = Math.min(totalPages, start + 4);
+      if (end - start < 4) start = Math.max(1, end - 4);
+
+      if (start > 1) { pagination.appendChild(btn('1', 1, false, false)); if (start > 2) { const e = document.createElement('button'); e.textContent = '…'; e.disabled = true; pagination.appendChild(e); } }
+      for (let p = start; p <= end; p++) pagination.appendChild(btn(p, p, false, p === currentPage));
+      if (end < totalPages) { if (end < totalPages - 1) { const e = document.createElement('button'); e.textContent = '…'; e.disabled = true; pagination.appendChild(e); } pagination.appendChild(btn(totalPages, totalPages, false, false)); }
+
+      pagination.appendChild(btn('&raquo;', currentPage + 1, currentPage === totalPages, false));
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    categoryFilter.addEventListener('change', applyFilters);
+
+    render();
+  })();
+  </script>
 </body>
 </html>
