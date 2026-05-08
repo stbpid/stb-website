@@ -54,7 +54,7 @@ function initPage() {
 
   /* ── ACTIVE NAV LINK ── */
   const currentPage = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.main-nav a[data-page]').forEach(link => {
+  document.querySelectorAll('.main-nav a[data-page], .main-nav .nav-label[data-page]').forEach(link => {
     if (link.dataset.page === currentPage) {
       link.classList.add('active');
     }
@@ -77,9 +77,28 @@ function initPage() {
         hamburger.setAttribute('aria-expanded', false);
       }
     });
-    // Close when a nav link is clicked (mobile UX)
+    // Mobile accordion: toggle dropdown on has-dropdown link/label click
+    mainNav.querySelectorAll('li.has-dropdown > a, li.has-dropdown > .nav-label').forEach(link => {
+      link.addEventListener('click', e => {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return;
+        e.preventDefault();
+        const li = link.closest('li.has-dropdown');
+        const wasOpen = li.classList.contains('open');
+        // Close siblings
+        li.parentElement.querySelectorAll(':scope > li.has-dropdown.open').forEach(sib => {
+          if (sib !== li) sib.classList.remove('open');
+        });
+        li.classList.toggle('open', !wasOpen);
+      });
+    });
+    // Close nav when a leaf link (no dropdown) is clicked on mobile
     mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', e => {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return;
+        const parentLi = link.closest('li');
+        if (parentLi && parentLi.classList.contains('has-dropdown')) return;
         mainNav.classList.remove('open');
         hamburger.classList.remove('open');
         hamburger.setAttribute('aria-expanded', false);
@@ -455,3 +474,99 @@ function initPage() {
 
 /* ── BOOT ── */
 document.addEventListener('DOMContentLoaded', initComponents);
+
+/* ============================================
+   GLOBAL MODAL — STB Ticketing + Survey
+   Works on every page via injected overlay
+   ============================================ */
+(function () {
+  const MODALS = {
+    ticketing: {
+      label: 'Support',
+      title: 'Social Technology Bureau Ticketing System',
+      img: 'images/tech-support-photo.webp',
+      imgAlt: 'Ticketing System',
+      body: '<p>Submit and track your technical requests with ease. Our ticketing system ensures your concerns are addressed promptly by the right team.</p><p>Whether you need technical assistance, program guidance, or administrative support, our ticketing system connects you directly with the right specialist at the Social Technology Bureau.</p>',
+      btnText: 'CREATE NEW REQUEST',
+      btnHref: '#'
+    },
+    survey: {
+      label: 'Feedback',
+      title: 'Customer Satisfaction Survey',
+      img: 'images/survey-icon-photo.webp',
+      imgAlt: 'Customer Satisfaction Survey',
+      body: '<p>Your feedback matters. Help us improve our services by sharing your experience with the Social Technology Bureau.</p><p>Your honest feedback allows us to identify areas for improvement and ensure we continue to deliver quality services to every Filipino we serve.</p>',
+      btnText: 'ACCESS SURVEY FORM',
+      btnHref: '#'
+    }
+  };
+
+  function injectModal() {
+    if (document.getElementById('g-modal-overlay')) return;
+
+    const style = document.createElement('style');
+    style.textContent = `
+      #g-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:9999; align-items:center; justify-content:center; padding:20px; }
+      #g-modal-overlay.active { display:flex; }
+      #g-modal-box { background:#fff; border-radius:16px; max-width:640px; width:100%; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3); animation:gModalIn 0.22s ease; }
+      @keyframes gModalIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+      #g-modal-close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:#6b7280; line-height:1; z-index:2; }
+      #g-modal-close:hover { color:#111; }
+      .gm-inner { padding:32px 32px 36px; }
+      .gm-img-wrap { text-align:center; margin-bottom:24px; }
+      .gm-img-wrap img { width:auto; max-width:100%; height:200px; object-fit:contain; border-radius:10px; display:inline-block; }
+      .gm-label { font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#ac0b08; display:block; margin-bottom:8px; }
+      .gm-title { font-size:22px; font-weight:800; color:#1a1a1a; margin-bottom:10px; line-height:1.3; }
+      .gm-divider { width:48px; height:4px; background:#003087; border-radius:2px; margin-bottom:18px; }
+      .gm-body p { font-size:14px; color:#282828; line-height:1.8; margin-bottom:12px; }
+      .gm-btn { display:inline-flex; align-items:center; gap:8px; margin-top:8px; background:#003087; color:#fff; padding:12px 24px; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; letter-spacing:0.5px; transition:background 0.2s; }
+      .gm-btn:hover { background:#00246b; }
+    `;
+    document.head.appendChild(style);
+
+    const overlay = document.createElement('div');
+    overlay.id = 'g-modal-overlay';
+    overlay.innerHTML = `
+      <div id="g-modal-box">
+        <button id="g-modal-close" aria-label="Close">&#10005;</button>
+        <div class="gm-inner" id="g-modal-content"></div>
+      </div>`;
+    document.body.appendChild(overlay);
+
+    document.getElementById('g-modal-close').addEventListener('click', closeModal);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+  }
+
+  function openModal(key) {
+    injectModal();
+    const m = MODALS[key];
+    document.getElementById('g-modal-content').innerHTML =
+      `<div class="gm-img-wrap"><img src="${m.img}" alt="${m.imgAlt}" /></div>` +
+      `<span class="gm-label">${m.label}</span>` +
+      `<div class="gm-title">${m.title}</div>` +
+      `<div class="gm-divider"></div>` +
+      `<div class="gm-body">${m.body}</div>` +
+      `<a href="${m.btnHref}" class="gm-btn">${m.btnText} <i class="fas fa-arrow-right"></i></a>`;
+    document.getElementById('g-modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const overlay = document.getElementById('g-modal-overlay');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    const text = link.textContent.trim().toLowerCase();
+    if (href.includes('ticketing') || text === 'stb ticketing system') {
+      e.preventDefault(); openModal('ticketing');
+    } else if (href.includes('survey') || text === 'satisfaction survey') {
+      e.preventDefault(); openModal('survey');
+    }
+  });
+})();

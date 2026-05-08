@@ -75,7 +75,7 @@
   <!-- ============================================================
        TICKETING SYSTEM
   ============================================================ -->
-  <section class="support-widgets-section">
+  <section class="support-widgets-section" id="section-ticketing" style="display:none;">
     <div class="container">
       <div class="reveal">
         <div class="widget-card">
@@ -95,7 +95,7 @@
   <!-- ============================================================
        CUSTOMER SATISFACTION SURVEY
   ============================================================ -->
-  <section class="support-widgets-section" style="background:var(--white);">
+  <section class="support-widgets-section" id="section-survey" style="display:none;background:var(--white);">
     <div class="container">
       <div class="reveal">
         <div class="widget-card" style="align-items:center;">
@@ -382,8 +382,99 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       MODALS: TICKETING + SURVEY
+  ============================================================ -->
+  <div id="stb-modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2000;align-items:center;justify-content:center;padding:20px;">
+    <div id="stb-modal-box" style="background:#fff;border-radius:16px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+      <button id="stb-modal-close" style="position:sticky;top:0;float:right;margin:16px 16px 0 0;background:none;border:none;font-size:22px;cursor:pointer;color:#6b7280;line-height:1;z-index:1;">&#10005;</button>
+      <div id="stb-modal-content" style="padding:32px 36px 36px;clear:both;"></div>
+    </div>
+  </div>
+
+  <style>
+    #stb-modal-overlay { display: none !important; }
+    #stb-modal-overlay.active { display: flex !important; }
+    #stb-modal-box { animation: modalIn 0.22s ease; }
+    @keyframes modalIn { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+    .modal-img { width:100%; height:220px; object-fit:cover; border-radius:10px; margin-bottom:24px; display:block; }
+    .modal-label { font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--red-accent); display:block; margin-bottom:8px; }
+    .modal-title { font-size:24px; font-weight:800; color:var(--text-dark); margin-bottom:10px; line-height:1.3; }
+    .modal-divider { width:48px; height:4px; background:var(--primary-blue); border-radius:2px; margin-bottom:18px; }
+    .modal-body p { font-size:14px; color:#282828; line-height:1.8; margin-bottom:14px; }
+    .modal-btn { display:inline-flex; align-items:center; gap:8px; margin-top:8px; }
+  </style>
+
   <div id="site-footer-mount"></div>
 
   <script src="js/script.js"></script>
+  <script>
+    (function () {
+      var overlay = document.getElementById('stb-modal-overlay');
+      var box     = document.getElementById('stb-modal-box');
+      var content = document.getElementById('stb-modal-content');
+      var closeBtn = document.getElementById('stb-modal-close');
+
+      var modals = {
+        ticketing: {
+          label: 'Support',
+          title: 'Social Technology Bureau Ticketing System',
+          img: 'images/tech-support-photo.webp',
+          imgAlt: 'Ticketing System Illustration',
+          body: '<p>Submit and track your technical requests with ease. Our ticketing system ensures your concerns are addressed promptly by the right team.</p><p>Whether you need technical assistance, program guidance, or administrative support, our ticketing system connects you directly with the right specialist at the Social Technology Bureau.</p>',
+          btnText: 'CREATE NEW REQUEST',
+          btnHref: '#'
+        },
+        survey: {
+          label: 'Feedback',
+          title: 'Customer Satisfaction Survey',
+          img: 'images/survey-icon-photo.webp',
+          imgAlt: 'Customer Satisfaction Survey Illustration',
+          body: '<p>Your feedback matters. Help us improve our services by sharing your experience with the Social Technology Bureau.</p><p>Your honest feedback allows us to identify areas for improvement and ensure we continue to deliver quality services to every Filipino we serve.</p>',
+          btnText: 'ACCESS SURVEY FORM',
+          btnHref: '#'
+        }
+      };
+
+      function openModal(key) {
+        var m = modals[key];
+        content.innerHTML =
+          '<img class="modal-img" src="' + m.img + '" alt="' + m.imgAlt + '" />' +
+          '<span class="modal-label">' + m.label + '</span>' +
+          '<div class="modal-title">' + m.title + '</div>' +
+          '<div class="modal-divider"></div>' +
+          '<div class="modal-body">' + m.body + '</div>' +
+          '<a href="' + m.btnHref + '" class="btn btn-primary modal-btn">' + m.btnText + ' <i class="fas fa-arrow-right"></i></a>';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a');
+        if (!link) return;
+        var href = link.getAttribute('href') || '';
+        var text = link.textContent.trim().toLowerCase();
+        if (href.includes('#ticketing') || text.includes('stb ticketing system') || text.includes('ticketing system')) {
+          e.preventDefault(); openModal('ticketing');
+        } else if (href.includes('#survey') || text.includes('satisfaction survey')) {
+          e.preventDefault(); openModal('survey');
+        }
+      });
+
+      // Auto-open on hash navigation
+      var hash = window.location.hash;
+      if (hash === '#ticketing') { setTimeout(function(){ openModal('ticketing'); history.replaceState(null,'',window.location.pathname); }, 400); }
+      else if (hash === '#survey') { setTimeout(function(){ openModal('survey'); history.replaceState(null,'',window.location.pathname); }, 400); }
+    })();
+  </script>
 </body>
 </html>

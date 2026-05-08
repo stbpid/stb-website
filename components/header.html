@@ -18,11 +18,57 @@
     <nav aria-label="Main Navigation">
       <ul class="main-nav">
         <li><a href="index.html" data-page="index.html">Home</a></li>
-        <li><a href="about.html" data-page="about.html">About Us</a></li>
-        <li><a href="#" data-page="social.html">Social Technologies</a></li>
-        <li><a href="resources.html" data-page="resources.html">Resources</a></li>
+        <li class="has-dropdown">
+          <span class="nav-label" data-page="about.html">About Us <span class="dropdown-arrow"></span></span>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">Social Technology Bureau</a></li>
+            <li><a href="job-opportunities.html">Job Opportunities</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <span class="nav-label" data-page="social.html">Social Technologies <span class="dropdown-arrow"></span></span>
+          <ul class="dropdown-menu">
+            <li class="has-dropdown">
+              <a href="#">Children and Youth <span class="dropdown-arrow dropdown-arrow-right"></span></a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="project-aruga.html">Project Aruga</a></li>
+                <li><a href="protectteen.html">ProtectTeen</a></li>
+                <li><a href="project-safe.html">Project Safe</a></li>
+                <li><a href="kalinga.html">Kalinga</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="#">Family and Women <span class="dropdown-arrow dropdown-arrow-right"></span></a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="pamilya-sa-bagong-pilipinas.html">Pamilya sa Bagong Pilipinas</a></li>
+                <li><a href="project-apo-ko.html">Project Apo Ko</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="#">Marginalized Groups <span class="dropdown-arrow dropdown-arrow-right"></span></a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="angel-pets.html">Angel Pets</a></li>
+                <li><a href="peace-project.html">Peace Project</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <span class="nav-label" data-page="resources.html">Resources <span class="dropdown-arrow"></span></span>
+          <ul class="dropdown-menu">
+            <li><a href="resources.html">Resource Center</a></li>
+            <li><a href="https://stbip-staging.dswd.gov.ph/main" target="_blank" rel="noopener noreferrer">STB Dashboard</a></li>
+          </ul>
+        </li>
         <li><a href="newsletter.html" data-page="newsletter.html">E-Newsletter</a></li>
-        <li><a href="contact.html" data-page="contact.html">Contact Us</a></li>
+        <li class="has-dropdown">
+          <span class="nav-label" data-page="contact.html">Contact Us <span class="dropdown-arrow"></span></span>
+          <ul class="dropdown-menu">
+            <li><a href="contact.html">Get in Touch</a></li>
+            <li><a href="#ticketing">STB Ticketing System</a></li>
+            <li><a href="#survey">Satisfaction Survey</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -34,8 +80,8 @@
         <input type="text" placeholder="Search..." aria-label="Search site" />
       </div>
       <div class="nav-cert-logos">
-        <div class="nav-cert-logo"><img id="img-dswd-logo" src="/images/transparency-seal.webp" alt="FOI Logo" class="h-10 w-auto object-contain"></div>
-        <div class="nav-cert-logo"><img id="img-dswd-logo" src="/images/freedom-of-information.webp" alt="FOI Logo" class="h-10 w-auto object-contain"></div></div>
+        <div class="nav-cert-logo"><a href="https://transparency.dswd.gov.ph/" target="_blank" rel="noopener noreferrer"><img id="img-dswd-logo" src="/images/transparency-seal.webp" alt="Transparency Seal" class="h-10 w-auto object-contain"></a></div>
+        <div class="nav-cert-logo"><a href="https://www.foi.gov.ph/" target="_blank" rel="noopener noreferrer"><img id="img-dswd-logo" src="/images/freedom-of-information.webp" alt="FOI Logo" class="h-10 w-auto object-contain"></a></div></div>
       </div>
     </div>
   </div>

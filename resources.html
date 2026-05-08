@@ -31,18 +31,61 @@
     .chip-video { background: #fdf2f8; color: #86198f; }
 
     .resources-search-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; }
+    .resources-search-wrap {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    .resources-search-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 13px;
+      pointer-events: none;
+    }
     .resources-search-bar input[type="text"] {
-      flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid #d1d5db;
+      width: 100%; padding: 10px 16px 10px 38px; border: 1px solid #d1d5db;
       border-radius: 8px; font-size: 14px; color: #374151; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; font-family: inherit;
+    }
+    .resources-search-bar input[type="text"]:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(0,48,135,0.08); }
+    .resources-select-wrap {
+      position: relative;
+      min-width: 180px;
+    }
+    .resources-select-wrap select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      padding: 10px 36px 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #374151;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
     }
-    .resources-search-bar input[type="text"]:focus { border-color: var(--primary-blue, #1d4ed8); box-shadow: 0 0 0 3px rgba(29,78,216,0.1); }
-    .resources-search-bar select {
-      padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px;
-      font-size: 14px; color: #374151; background: #fff; cursor: pointer; outline: none;
-      transition: border-color 0.2s;
+    .resources-select-wrap select:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
     }
-    .resources-search-bar select:focus { border-color: var(--primary-blue, #1d4ed8); }
+    .resources-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-60%) rotate(45deg);
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid #6b7280;
+      border-bottom: 1.5px solid #6b7280;
+      pointer-events: none;
+    }
     .resources-table-info { font-size: 13px; color: #6b7280; margin-bottom: 8px; }
   </style>
 </head>
@@ -54,7 +97,7 @@
     <div class="container">
       <div class="reveal" style="padding-bottom:32px;">
         <span class="label-tag">Social Technology Unit</span>
-        <h1 class="section-title-lg">STB Resources</h1>
+        <h1 class="section-title-lg">STB Resource Center</h1>
         <div class="section-divider"></div>
         <p class="section-subtitle">Access and download official laws, issuances, publications, forms, templates, presentations, and orientation videos from the Social Technology Bureau.</p>
       </div>
@@ -66,19 +109,24 @@
       <div class="reveal">
 
         <div class="resources-search-bar">
-          <input type="text" id="res-search" placeholder="Search by file name…" autocomplete="off" />
-          <select id="res-category-filter">
-            <option value="">All Categories</option>
-            <option value="Law">Law</option>
-            <option value="Manual">Manual</option>
-            <option value="Guidelines">Guidelines</option>
-            <option value="Briefer">Briefer</option>
-            <option value="Storybook">Storybook</option>
-            <option value="Primer">Primer</option>
-            <option value="Form">Form</option>
-            <option value="Presentation">Presentation</option>
-            <option value="Video">Video</option>
-          </select>
+          <div class="resources-search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="res-search" placeholder="Search by file name…" autocomplete="off" />
+          </div>
+          <div class="resources-select-wrap">
+            <select id="res-category-filter">
+              <option value="">All Categories</option>
+              <option value="Law">Law</option>
+              <option value="Manual">Manual</option>
+              <option value="Guidelines">Guidelines</option>
+              <option value="Briefer">Briefer</option>
+              <option value="Storybook">Storybook</option>
+              <option value="Primer">Primer</option>
+              <option value="Form">Form</option>
+              <option value="Presentation">Presentation</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
         </div>
 
         <div class="resources-table-info" id="res-table-info"></div>
