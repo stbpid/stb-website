@@ -521,6 +521,14 @@ document.addEventListener('DOMContentLoaded', initComponents);
       .gm-body p { font-size:14px; color:#282828; line-height:1.8; margin-bottom:12px; }
       .gm-btn { display:inline-flex; align-items:center; gap:8px; margin-top:8px; background:#003087; color:#fff; padding:12px 24px; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; letter-spacing:0.5px; transition:background 0.2s; }
       .gm-btn:hover { background:#00246b; }
+      @media (max-width: 768px) {
+        #g-modal-overlay { padding:0; align-items:flex-end; }
+        #g-modal-box { border-radius:16px 16px 0 0; max-height:85vh; width:100%; }
+        .gm-inner { padding:24px 20px 32px; }
+        .gm-img-wrap img { height:150px; }
+        .gm-title { font-size:18px; }
+        .gm-btn { width:100%; justify-content:center; }
+      }
     `;
     document.head.appendChild(style);
 
