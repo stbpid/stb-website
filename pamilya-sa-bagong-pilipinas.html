@@ -8,27 +8,239 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    .page-title-section {
-      padding: 80px 0 60px;
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    /* Page title banner */
+    .pbp-title-section {
+      padding: 64px 0 48px;
       background: var(--bg-light);
       text-align: center;
     }
-    .page-title-section .label-tag { margin-bottom: 10px; }
-    .page-title-section h1 { font-size: 36px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
-    .page-title-section p { font-size: 15px; color: var(--text-medium); max-width: 560px; margin: 0 auto; }
-    .section-divider { margin: 12px auto 0; }
+    .pbp-title-section h1 {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .pbp-title-section p {
+      font-size: 14px;
+      color: var(--text-medium);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* About row */
+    .pbp-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .pbp-about-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+
+    /* Objectives list */
+    .pbp-obj-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .pbp-obj-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--text-medium);
+      line-height: 1.7;
+    }
+    .pbp-obj-list li i {
+      color: var(--primary-blue);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Components grid */
+    .pbp-comp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .pbp-comp-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .pbp-comp-card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: #eef2fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--primary-blue);
+      flex-shrink: 0;
+    }
+    .pbp-comp-card h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .pbp-comp-card p {
+      font-size: 13px;
+      color: var(--text-medium);
+      line-height: 1.65;
+    }
+
+    /* Pilot areas */
+    .pbp-pilot-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pbp-pilot-tag {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 50px;
+      padding: 7px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pbp-pilot-tag span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .pbp-about-grid { grid-template-columns: 1fr; }
+      .pbp-comp-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <div id="site-header-mount"></div>
 
-  <section class="page-title-section">
+  <!-- Title -->
+  <section class="pbp-title-section reveal">
     <div class="container">
       <span class="label-tag">Family and Women</span>
       <h1>Pamilya sa Bagong Pilipinas</h1>
       <div class="section-divider center"></div>
-      <p>A social technology program under the Family and Women sector of the Social Technology Bureau — DSWD.</p>
+      <p>A Family Development and Welfare Model that brings DSWD programs and services closer to Filipino Families.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="pbp-about-grid reveal">
+        <div>
+          <span class="label-tag">About the Program</span>
+          <h2 class="section-title">What is Pamilya sa Bagong Pilipinas?</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.8;margin-bottom:14px;">The <strong>Pamilya sa Bagong Pilipinas Program</strong> is a family development and welfare model that brings DSWD programs and services closer to Filipino Families through matching clients with available interventions in response to the challenges and needs faced across individual life stages.</p>
+          <p style="font-size:14px;color:var(--primary-blue);font-style:italic;font-weight:600;line-height:1.7;">Sa anumang hamon ng buhay ng bawat pamilyang Pilipino, may programa kami diyan!</p>
+        </div>
+        <img src="images/pamilya-overview.webp" alt="Pamilya sa Bagong Pilipinas" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section-pad" style="background:var(--bg-light);">
+    <div class="container reveal">
+      <span class="label-tag">Goals</span>
+      <h2 class="section-title">Objectives</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:14px;color:var(--text-medium);">The Pamilya sa Bagong Pilipinas aims to:</p>
+      <ul class="pbp-obj-list">
+        <li><i class="fas fa-check-circle"></i><span>Gather and maintain data on the vulnerable families using the PBP Registry;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Establish a physical or online social welfare hubs for community-level access;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Harmonize the Department's social welfare and development (SWD) programs for consistency and efficiency; and</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Increase public awareness of the Department's programs.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-tag">Key Features</span>
+        <h2 class="section-title">Program Components</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="pbp-comp-grid reveal">
+        <div class="pbp-comp-card">
+          <div class="icon"><i class="fas fa-list-alt"></i></div>
+          <div>
+            <h4>PBP Social Registry</h4>
+            <p>An online platform for registration, profiling, and service-matching for Filipino families, including a customized list of services.</p>
+          </div>
+        </div>
+        <div class="pbp-comp-card">
+          <div class="icon"><i class="fas fa-home"></i></div>
+          <div>
+            <h4>PBP Hub</h4>
+            <p>A digital and physical access point for beneficiaries to register, update information, and explore SWD programs through system-generated matches.</p>
+          </div>
+        </div>
+        <div class="pbp-comp-card">
+          <div class="icon"><i class="fas fa-book-open"></i></div>
+          <div>
+            <h4>PBP Compendium</h4>
+            <p>A ready reference for families to navigate programs, detailing eligibility requirements and referral procedures.</p>
+          </div>
+        </div>
+        <div class="pbp-comp-card">
+          <div class="icon"><i class="fas fa-users"></i></div>
+          <div>
+            <h4>PBP Advocacy</h4>
+            <p>Initiatives to raise public awareness of DSWD programs so more families are informed and equipped to avail of services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilot Areas -->
+  <section class="section-pad" style="background:var(--bg-light);">
+    <div class="container reveal">
+      <span class="label-tag">Coverage</span>
+      <h2 class="section-title">Pilot Areas</h2>
+      <div class="section-divider"></div>
+      <div class="pbp-pilot-list">
+        <div class="pbp-pilot-tag"><span></span>Region II</div>
+        <div class="pbp-pilot-tag"><span></span>Region III</div>
+        <div class="pbp-pilot-tag"><span></span>National Capital Region (NCR)</div>
+        <div class="pbp-pilot-tag"><span></span>Region IV-A</div>
+        <div class="pbp-pilot-tag"><span></span>Negros Island Region</div>
+        <div class="pbp-pilot-tag"><span></span>Caraga Region</div>
+      </div>
     </div>
   </section>
 
