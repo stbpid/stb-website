@@ -2772,7 +2772,7 @@ body.header-collapsed {
     background: var(--white);
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     z-index: 200;
-    border-top: 2px solid var(--primary-blue);
+    border-top: none;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -2810,16 +2810,24 @@ body.header-collapsed {
     width: 100%;
   }
 
-  /* Active/hover: left accent bar instead of bottom underline */
-  .main-nav li > a.active,
+  /* Active: blue highlight only; hover: subtle bg */
   .main-nav li > a:hover,
-  .main-nav li > .nav-label.active,
+  .main-nav li > .nav-label:hover,
   .main-nav li.has-dropdown.open > .nav-label {
     color: var(--primary-blue);
     background: #f0f4ff;
     border-bottom-color: var(--border-light) !important;
-    border-left: 3px solid var(--primary-blue) !important;
-    padding-left: 17px;
+    border-left: none !important;
+    padding-left: 20px;
+  }
+  .main-nav li > a.active,
+  .main-nav li > .nav-label.active {
+    color: var(--primary-blue);
+    background: #e8eeff;
+    border-bottom-color: var(--border-light) !important;
+    border-left: none !important;
+    padding-left: 20px;
+    font-weight: 700;
   }
 
   .hamburger { display: flex; }
