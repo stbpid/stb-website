@@ -8,32 +8,413 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    .page-title-section {
-      padding: 80px 0 60px;
-      background: var(--bg-light);
-      text-align: center;
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    /* Row 1 */
+    .ar-hero-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; }
+    .ar-hero-photo { position: relative; overflow: hidden; background: #1a1a1a; }
+    .ar-hero-photo img {
+      width: 100%; height: 150%; object-fit: cover; object-position: center;
+      display: block; position: absolute; top: 0; left: 0; will-change: transform;
     }
-    .page-title-section .label-tag { margin-bottom: 10px; }
-    .page-title-section h1 { font-size: 36px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
-    .page-title-section p { font-size: 15px; color: var(--text-medium); max-width: 560px; margin: 0 auto; }
-    .section-divider { margin: 12px auto 0; }
+    .ar-hero-photo-overlay { position: absolute; inset: 0; background: rgba(0,20,60,0.35); }
+    .ar-hero-text { background: var(--primary-blue); display: flex; align-items: center; padding: 56px 52px; }
+    .ar-hero-text .label-tag { color: rgba(255,255,255,0.75); }
+    .ar-hero-text h1 { font-size: 30px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+    .ar-hero-text p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 14px; }
+    .ar-hero-text .tagline { font-size: 14px; color: rgba(255,255,255,0.9); font-style: italic; font-weight: 600; line-height: 1.7; }
+    .ar-divider { width: 48px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 2px; margin: 12px 0 20px; }
+
+    /* Row 2 */
+    .ar-what-section { background: var(--white); padding: 64px 0; }
+
+    /* Lists */
+    .ar-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .ar-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--text-medium); line-height: 1.7; }
+    .ar-list li i { color: var(--primary-blue); margin-top: 3px; flex-shrink: 0; }
+
+    /* Components */
+    .ar-comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px; }
+    .ar-comp-card {
+      background: var(--white); border: 1px solid var(--border-light);
+      border-radius: var(--radius-md); padding: 24px 20px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .ar-comp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: #c5d5ea; }
+    .ar-comp-card .icon {
+      width: 42px; height: 42px; border-radius: var(--radius-sm);
+      background: #eef2fb; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--primary-blue); flex-shrink: 0;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    .ar-comp-card:hover .icon { background: var(--primary-blue); color: #fff; }
+    .ar-comp-card h4 { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .ar-comp-card p { font-size: 13px; color: var(--text-medium); line-height: 1.65; }
+
+    /* Pilot tags */
+    .ar-pilot-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .ar-pilot-tag {
+      background: var(--white); border: 1px solid var(--border-light);
+      border-radius: 50px; padding: 7px 18px;
+      font-size: 13px; font-weight: 600; color: var(--primary-blue);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ar-pilot-tag span { width: 7px; height: 7px; border-radius: 50%; background: var(--primary-blue); flex-shrink: 0; }
+
+    /* CTA */
+    .ar-cta { background: linear-gradient(135deg, var(--primary-blue) 0%, var(--navy-dark) 100%); padding: 72px 0; text-align: center; color: #fff; }
+    .ar-cta .cta-inner { max-width: 640px; margin: 0 auto; }
+    .ar-cta .label-tag { color: rgba(255,255,255,0.75); }
+    .ar-cta h2 { font-size: 30px; font-weight: 700; margin-bottom: 16px; line-height: 1.25; }
+    .ar-cta p { font-size: 15px; opacity: 0.88; line-height: 1.8; margin-bottom: 32px; }
+    .ar-cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .ar-cta-btns .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      background: #fff; color: var(--primary-blue); border: 2px solid #fff;
+      transition: opacity 0.2s; cursor: pointer;
+    }
+    .ar-cta-btns .btn-white:hover { opacity: 0.88; }
+    .ar-cta-btns .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s;
+    }
+    .ar-cta-btns .btn-outline:hover { border-color: #fff; }
+
+    /* Briefer */
+    .ar-briefer-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .ar-briefer-img-box { height: 240px; border-radius: var(--radius-md); overflow: hidden; background: #eef2fb; }
+    .ar-briefer-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .btn-ar-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      background: var(--primary-blue); color: #fff; border: none; transition: opacity 0.2s;
+    }
+    .btn-ar-primary:hover { opacity: 0.85; }
+
+    /* Ticket Modal */
+    .ticket-modal-backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); z-index: 9000;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .ticket-modal-backdrop.open { display: flex; }
+    .ticket-modal {
+      background: #fff; border-radius: var(--radius-lg); width: 100%;
+      max-width: 560px; max-height: 90vh; overflow-y: auto;
+      box-shadow: var(--shadow-lg); animation: modalIn 0.25s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .ticket-modal-header {
+      background: var(--primary-blue); color: #fff; padding: 24px 28px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .ticket-modal-header h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .ticket-modal-header p { font-size: 13px; opacity: 0.8; }
+    .ticket-modal-close {
+      background: none; border: none; color: #fff; font-size: 20px;
+      cursor: pointer; opacity: 0.7; transition: opacity 0.2s; line-height: 1;
+      padding: 0; margin-left: 16px; flex-shrink: 0;
+    }
+    .ticket-modal-close:hover { opacity: 1; }
+    .ticket-modal-body { padding: 28px; }
+    .ticket-field { margin-bottom: 18px; }
+    .ticket-field label { display: block; font-size: 12px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .ticket-field input, .ticket-field select, .ticket-field textarea {
+      width: 100%; padding: 10px 14px; border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm); font-size: 14px; font-family: inherit;
+      color: var(--text-dark); background: #fff; transition: border-color 0.2s; outline: none;
+    }
+    .ticket-field input:focus, .ticket-field select:focus, .ticket-field textarea:focus { border-color: var(--primary-blue); }
+    .ticket-field textarea { resize: vertical; min-height: 100px; }
+    .ticket-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .ticket-modal-footer { padding: 0 28px 28px; display: flex; gap: 12px; justify-content: flex-end; }
+    .ticket-modal-footer .btn-cancel {
+      padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border-light); background: #fff; color: var(--text-medium); cursor: pointer;
+    }
+    .ticket-modal-footer .btn-submit {
+      padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      background: var(--primary-blue); color: #fff; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s;
+    }
+    .ticket-modal-footer .btn-submit:hover { opacity: 0.88; }
+
+    @media (max-width: 768px) {
+      .ar-hero-grid { grid-template-columns: 1fr; }
+      .ar-hero-photo { height: 240px; }
+      .ar-hero-text { padding: 36px 24px; }
+      .ar-hero-text h1 { font-size: 26px; }
+      .ar-comp-grid { grid-template-columns: 1fr; }
+      .ar-briefer-two-col { grid-template-columns: 1fr; }
+      .ticket-field-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <div id="site-header-mount"></div>
 
-  <section class="page-title-section">
+  <!-- Row 1: Photo | Title -->
+  <div class="ar-hero-grid">
+    <div class="ar-hero-photo">
+      <img src="images/aruga-cover.webp" alt="Project Aruga" />
+      <div class="ar-hero-photo-overlay"></div>
+    </div>
+    <div class="ar-hero-text">
+      <div>
+        <img src="images/aruga-logo.webp" alt="Aruga Logo" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;" onerror="this.style.display='none'" />
+        <span class="label-tag">Children and Youth</span>
+        <h1>Project Aruga</h1>
+        <div class="ar-divider"></div>
+        <p>A community-based project that provides disability inclusive social protection to children with disabilities and their families.</p>
+        <p class="tagline">It responds to substantial unmet needs by providing comprehensive social services to develop the child's full potential.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: What is Aruga | Pilot Areas -->
+  <section class="ar-what-section">
+    <div class="container reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+        <!-- Col 1 -->
+        <div>
+          <span class="label-tag">About the Program</span>
+          <h2 class="section-title">What is Project Aruga?</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.8;margin-bottom:14px;"><strong>Project Aruga</strong> is a community-based project that provides disability inclusive social protection to children with disabilities and their families. Aruga also provides a <em>Disability Support Allowance</em> to parents based on the severity of the child's functioning limitations to help augment support for basic needs, health care, and education.</p>
+          <p style="font-size:14px;color:var(--text-medium);line-height:1.8;">It responds to substantial unmet needs by providing comprehensive social services to develop the child's full potential.</p>
+        </div>
+        <!-- Col 2: Pilot Areas -->
+        <div>
+          <span class="label-tag">Coverage</span>
+          <h2 class="section-title">Pilot Areas</h2>
+          <div class="section-divider"></div>
+          <div class="ar-pilot-list">
+            <div class="ar-pilot-tag"><span></span>Region I: Laoag City, Ilocos Norte</div>
+            <div class="ar-pilot-tag"><span></span>Region VI: San Jose del Buenavista, Antique</div>
+            <div class="ar-pilot-tag"><span></span>Region MIMAROPA: Puerto Princesa City, Palawan</div>
+            <div class="ar-pilot-tag"><span></span>Region XI: Sta. Cruz, Davao del Sur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section-pad" style="background:var(--bg-light);">
+    <div class="container reveal">
+      <span class="label-tag">Goals</span>
+      <h2 class="section-title">Objectives</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:14px;color:var(--text-medium);margin-bottom:4px;">Project Aruga aims to:</p>
+      <ul class="ar-list">
+        <li><i class="fas fa-check-circle"></i><span>Strengthen early detection and registration of children with disabilities through inter-agency collaboration;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Provide disability allowance to help cover basic service needs and related costs;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Improve access to health, education, livelihood, and social protection services through strengthened local support systems; and</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Capacitate volunteers to deliver home care support services.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Beneficiaries -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container reveal">
+      <span class="label-tag">Who Can Avail</span>
+      <h2 class="section-title">Beneficiaries</h2>
+      <div class="section-divider"></div>
+      <ul class="ar-list">
+        <li><i class="fas fa-check-circle"></i><span>Children with disabilities <strong>belonging to poor and vulnerable households</strong>;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Identified beneficiaries subject to validation <strong>using data from the concerned National Government Agencies (NGAs)</strong>;</span></li>
+        <li><i class="fas fa-check-circle"></i><span>Families and caregivers of poor children with disabilities.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section-pad" style="background:var(--bg-light);">
     <div class="container">
-      <span class="label-tag">Children and Youth</span>
-      <h1>Project Aruga</h1>
-      <div class="section-divider center"></div>
-      <p>A social technology program under the Children and Youth sector of the Social Technology Bureau — DSWD.</p>
+      <div class="reveal">
+        <span class="label-tag">Key Features</span>
+        <h2 class="section-title">Program Components</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="ar-comp-grid reveal">
+        <div class="ar-comp-card">
+          <div class="icon"><i class="fas fa-network-wired"></i></div>
+          <div>
+            <h4>Data Management and Referral Network</h4>
+            <p>Strengthens inter-agency coordination to improve the identification, assessment, registration, and referral of children with disabilities (CWD) using standardized digitized systems.</p>
+          </div>
+        </div>
+        <div class="ar-comp-card">
+          <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+          <div>
+            <h4>Disability Support Allowance</h4>
+            <p>Regularly provided to eligible children with disabilities to help meet additional costs related to health, education, nutrition, assistive devices, and other essential needs.</p>
+          </div>
+        </div>
+        <div class="ar-comp-card">
+          <div class="icon"><i class="fas fa-hands-helping"></i></div>
+          <div>
+            <h4>Community Mobilization and Support</h4>
+            <p>Builds the capacity of implementers, parents, and community volunteers through learning sessions, to provide homebased care and community support services, while reducing stigma.</p>
+          </div>
+        </div>
+        <div class="ar-comp-card">
+          <div class="icon"><i class="fas fa-star-of-life"></i></div>
+          <div>
+            <h4>Auxiliary Services</h4>
+            <p>Provides children with disabilities and their families their social welfare, health, education, social insurance, and livelihood support needs based on assessment and availability of services from strengthened inter-agency coordination.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="ar-cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <span class="label-tag">Take Action</span>
+        <h2>Want to Bring This Program to Your Community?</h2>
+        <p>Project Aruga is built to grow. If your city or municipality is ready to champion inclusive social protection for children with disabilities, we want to hear from you. Let's build a stronger, more inclusive community together.</p>
+        <div class="ar-cta-btns">
+          <button class="btn-white" id="btn-partner-ar"><i class="fas fa-handshake"></i> Partner With Us</button>
+          <a href="contact.html" class="btn-outline"><i class="fas fa-envelope"></i> Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Briefer -->
+  <section class="section-pad" style="background:var(--white);">
+    <div class="container">
+      <div class="ar-briefer-two-col reveal">
+        <div>
+          <span class="label-tag">Downloads</span>
+          <h2 class="section-title">Project Aruga Program Briefer</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:14px;color:var(--text-light);line-height:1.8;margin-bottom:28px;">Download the official Project Aruga briefer for a comprehensive overview — including beneficiary criteria, objectives, components, and referral procedures. Share it with your community and help support children with disabilities.</p>
+          <a href="#" class="btn-ar-primary" download><i class="fas fa-download"></i> Download Aruga Briefer</a>
+        </div>
+        <div class="ar-briefer-img-box">
+          <img src="images/aruga-cover.webp" alt="Project Aruga Briefer" onerror="this.style.background='#eef2fb'" />
+        </div>
+      </div>
     </div>
   </section>
 
   <div id="site-footer-mount"></div>
 
+  <!-- Ticket Modal -->
+  <div class="ticket-modal-backdrop" id="ticket-modal-backdrop-ar">
+    <div class="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="ticket-modal-title-ar">
+      <div class="ticket-modal-header">
+        <div>
+          <h3 id="ticket-modal-title-ar">Partner With Us</h3>
+          <p>Submit a partnership request and our team will get back to you shortly.</p>
+        </div>
+        <button class="ticket-modal-close" id="ticket-modal-close-ar" aria-label="Close">&times;</button>
+      </div>
+      <div class="ticket-modal-body">
+        <div class="ticket-field-row">
+          <div class="ticket-field">
+            <label>First Name <span style="color:var(--red-accent);">*</span></label>
+            <input type="text" placeholder="e.g. Juan" />
+          </div>
+          <div class="ticket-field">
+            <label>Last Name <span style="color:var(--red-accent);">*</span></label>
+            <input type="text" placeholder="e.g. dela Cruz" />
+          </div>
+        </div>
+        <div class="ticket-field">
+          <label>Email Address <span style="color:var(--red-accent);">*</span></label>
+          <input type="email" placeholder="youremail@example.com" />
+        </div>
+        <div class="ticket-field">
+          <label>Contact Number</label>
+          <input type="tel" placeholder="+63 9XX XXX XXXX" />
+        </div>
+        <div class="ticket-field-row">
+          <div class="ticket-field">
+            <label>Organization / LGU <span style="color:var(--red-accent);">*</span></label>
+            <input type="text" placeholder="City / Municipality / Agency" />
+          </div>
+          <div class="ticket-field">
+            <label>Region <span style="color:var(--red-accent);">*</span></label>
+            <select>
+              <option value="" disabled selected>Select region</option>
+              <option>Region I</option><option>Region II</option><option>Region III</option>
+              <option>Region IV-A</option><option>Region IV-B / MIMAROPA</option><option>Region V</option>
+              <option>Region VI</option><option>Region VII</option><option>Region VIII</option>
+              <option>Region IX</option><option>Region X</option><option>Region XI</option>
+              <option>Region XII</option><option>National Capital Region (NCR)</option>
+              <option>Cordillera Administrative Region (CAR)</option>
+              <option>Negros Island Region</option><option>Caraga Region</option><option>BARMM</option>
+            </select>
+          </div>
+        </div>
+        <div class="ticket-field">
+          <label>Type of Partnership Interest</label>
+          <select>
+            <option value="" disabled selected>Select type</option>
+            <option>Project Aruga Replication</option>
+            <option>Disability Support Allowance Program</option>
+            <option>Community Mobilization and Support</option>
+            <option>Data Management and Referral Network</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="ticket-field">
+          <label>Message / Additional Details</label>
+          <textarea placeholder="Tell us more about your interest in partnering with Project Aruga..."></textarea>
+        </div>
+      </div>
+      <div class="ticket-modal-footer">
+        <button class="btn-cancel" id="ticket-modal-cancel-ar">Cancel</button>
+        <button class="btn-submit"><i class="fas fa-paper-plane"></i> Submit Request</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/script.js"></script>
+  <script>
+    (function () {
+      var heroPhoto = document.querySelector('.ar-hero-photo');
+      var heroImg = heroPhoto ? heroPhoto.querySelector('img') : null;
+      if (heroImg) {
+        function applyParallax() {
+          var rect = heroPhoto.getBoundingClientRect();
+          var heroH = heroPhoto.offsetHeight;
+          var imgH = heroImg.offsetHeight;
+          var maxShift = imgH - heroH;
+          var progress = (rect.top + heroH / 2) / (window.innerHeight + heroH);
+          var offset = Math.max(0, Math.min(maxShift, progress * maxShift));
+          heroImg.style.transform = 'translateY(-' + offset + 'px)';
+        }
+        window.addEventListener('scroll', applyParallax, { passive: true });
+        applyParallax();
+      }
+    })();
+    (function () {
+      var backdrop = document.getElementById('ticket-modal-backdrop-ar');
+      var btnPartner = document.getElementById('btn-partner-ar');
+      var btnClose = document.getElementById('ticket-modal-close-ar');
+      var btnCancel = document.getElementById('ticket-modal-cancel-ar');
+      function openModal() { backdrop.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function closeModal() { backdrop.classList.remove('open'); document.body.style.overflow = ''; }
+      btnPartner.addEventListener('click', openModal);
+      btnClose.addEventListener('click', closeModal);
+      btnCancel.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    })();
+  </script>
 </body>
 </html>
