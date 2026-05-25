@@ -53,7 +53,7 @@ function initPage() {
   }
 
   /* ── ACTIVE NAV LINK ── */
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const currentPage = location.pathname.split('/').filter(Boolean).pop() || 'index';
   document.querySelectorAll('.main-nav a[data-page], .main-nav .nav-label[data-page]').forEach(link => {
     if (link.dataset.page === currentPage) {
       link.classList.add('active');
