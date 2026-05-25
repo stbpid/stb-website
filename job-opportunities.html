@@ -190,6 +190,7 @@
               <th>Status</th>
               <th>Division / Unit</th>
               <th>Deadline of Submission</th>
+              <th>View</th>
             </tr>
           </thead>
           <tbody id="jobs-tbody"></tbody>
@@ -214,7 +215,7 @@
       const ROWS_PER_PAGE = 10;
 
       const data = [
-        { position: 'Information Technology Officer I', salary: 'SG-19 / ₱48,649', itemNo: 'STB-005', status: 'Closed', division: 'Social Technology Assessment and Evaluation Division', deadline: 'April 30, 2026' },
+        { position: 'Information Technology Officer I', salary: 'SG-19 / ₱48,649', itemNo: 'STB-005', status: 'Closed', division: 'Social Technology Assessment and Evaluation Division', deadline: 'April 30, 2026', link: '' },
       ];
 
       let currentPage = 1;
@@ -266,6 +267,7 @@
             <td><span class="status-badge ${statusClass(r.status)}">${r.status}</span></td>
             <td>${r.division}</td>
             <td>${r.deadline}</td>
+            <td>${r.link ? `<a href="${r.link}" download title="Download" style="color:var(--primary-blue);font-size:16px;"><i class="fas fa-file-download"></i></a>` : '—'}</td>
           `;
           tbody.appendChild(tr);
         });
